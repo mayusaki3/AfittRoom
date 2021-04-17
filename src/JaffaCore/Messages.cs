@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Jaffa
+﻿namespace Jaffa
 {
-    public static class CoreMessages
+    public static class Messages
     {
         // Coreメッセージ
         public const string JFW00001 = "JFW00001 {JAFFA_TITLE} {JAFFA_VERSION} %0";

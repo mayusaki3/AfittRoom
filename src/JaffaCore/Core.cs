@@ -49,7 +49,7 @@ namespace Jaffa
                 // 開始メッセージ
                 if (LoggingSettings.FrameworkMessage)
                 {
-                    Logging.Write(MakeMessage(Jaffa, CoreMessages.JFW00001, new string[] { Version }));
+                    Logging.Write(MakeMessage(Jaffa, Messages.JFW00001, new string[] { Version }));
                 }
             }
 
