@@ -27,21 +27,20 @@ namespace Jaffa
             /// コンストラクタ―
             /// </summary>
             public CoreHelper()
-                : base()
             {
                 // 起動パス記憶
                 startupPath = Process.GetCurrentProcess().MainModule.FileName;
 
                 // リソースマネージャ初期化（国際化対応リスト）
                 Assembly thisAsm = Assembly.GetExecutingAssembly();
-                resManLst = new();
+                ResManLst = new();
                 SetResource(JaffaCulture,"Jaffa.Resources.CultureList", thisAsm);
 
                 // 国際化対応の初期化
                 International.Initialize();
 
                 // リソースマネージャ初期化（Jaffaコアリソース）
-                SetResource(Jaffa, "Jaffa.Resources." + International.CurrentCulture + ".Resource", thisAsm);
+                SetResource(Jaffa, "Jaffa.Resources.{Culture}.Resource", thisAsm);
 
                 // カルチャー変更イベント設定
                 International.CultureChanged += International_CultureChanged;
@@ -49,7 +48,7 @@ namespace Jaffa
                 // 開始メッセージ
                 if (LoggingSettings.FrameworkMessage)
                 {
-                    Logging.Write(MakeMessage(Jaffa, Messages.JFW00001, new string[] { Version }));
+                    Logging.Write(MakeMessage(Jaffa, Messages.JFWI0001, new string[] { Version }));
                 }
             }
 
@@ -68,7 +67,7 @@ namespace Jaffa
             {
                 // リソースマネージャ変更（Jaffaコアリソース）
                 Assembly thisAsm = Assembly.GetExecutingAssembly();
-                Core.SetResource(Jaffa, "Jaffa.Resources." + International.CurrentCulture + ".Resource", thisAsm);
+                Core.SetResource(Jaffa, "Jaffa.Resources.{Culture}.Resource", thisAsm);
             }
 
             #endregion
@@ -99,7 +98,9 @@ namespace Jaffa
         /// <summary>
         /// コアヘルパー
         /// </summary>
-        private static CoreHelper helper = new();
+#pragma warning disable IDE0052 // 読み取られていないプライベート メンバーを削除
+        private static readonly CoreHelper helper = new();
+#pragma warning restore IDE0052 // 読み取られていないプライベート メンバーを削除
 
         #endregion
 
@@ -111,17 +112,18 @@ namespace Jaffa
         /// リソースマネージャを設定します。
         /// </summary>
         /// <param name="name">リソース名</param>
-        /// <param name="resourcePath">リソースパス名</param>
+        /// <param name="resourcePath">リソースパス名（リソースパス名内の{Culture}は現在のカルチャー名に置き換わります）</param>
         /// <param name="assembly">リソースが格納されたアセンブリ</param>
         public static void SetResource(string name, string resourcePath, Assembly assembly)
         {
-            if (resManLst.Contains(name) == true)
+            resourcePath = resourcePath.Replace("{Culture}", International.CurrentCulture).Replace('-', '_');
+            if (ResManLst.Contains(name) == true)
             {
-                resManLst[name] = new ResourceManager(resourcePath.Replace('-', '_'), assembly);
+                ResManLst[name] = new ResourceManager(resourcePath, assembly);
             }
             else
             {
-                resManLst.Add(name, new ResourceManager(resourcePath.Replace('-', '_'), assembly));
+                ResManLst.Add(name, new ResourceManager(resourcePath, assembly));
             }
         }
 
@@ -136,7 +138,7 @@ namespace Jaffa
         /// <returns>リソースマネージャ</returns>
         public static ResourceManager Resource(string name)
         {
-            return resManLst[name] as ResourceManager;
+            return ResManLst[name] as ResourceManager;
         }
 
         #endregion
@@ -174,9 +176,9 @@ namespace Jaffa
 
         #region プロパティ
 
-        #region リソースマネージャーリスト ([R/W] resManLst) [private]
+        #region リソースマネージャーリスト ([R/W] ResManLst) [private]
 
-        private static Hashtable resManLst { get; set; } // 初期化が競合するのでCoreHelper側で初期化
+        private static Hashtable ResManLst { get; set; } // 初期化が競合するのでCoreHelper側で初期化
 
         #endregion
 

@@ -97,51 +97,6 @@ namespace Jaffa.Diagnostics
         }
 
         /// <summary>
-        /// デバッグ用にメッセージとデータを出力します。
-        /// </summary>
-        /// <param name="message">メッセージ</param>
-        /// <param name="data">データリスト</param>
-        [Conditional("DEBUG")]
-        private static void DebugWrite(string message, LoggingData data)
-        {
-            foreach (string msg in data.ToStrings())
-            {
-                System.Diagnostics.Debug.WriteLine(message + " " + msg);
-            }
-        }
-
-        /// <summary>
-        /// デバッグ用にメッセージとデータを出力します。
-        /// </summary>
-        /// <param name="message">メッセージ</param>
-        /// <param name="data">データリスト</param>
-        [Conditional("DEBUG")]
-        private static void DebugWrite(string message, ConcurrentQueue<LoggingData> data)
-        {
-            foreach (LoggingData log in data)
-            {
-                foreach (string msg in log.ToStrings())
-                {
-                    System.Diagnostics.Debug.WriteLine(message + " " + msg);
-                }
-            }
-        }
-
-        /// <summary>
-        /// デバッグ用にメッセージとデータを出力します。
-        /// </summary>
-        /// <param name="message">メッセージ</param>
-        /// <param name="data">データリスト</param>
-        [Conditional("DEBUG")]
-        private static void DebugWrite(string message, List<string> data)
-        {
-            foreach (string msg in data)
-            {
-                System.Diagnostics.Debug.WriteLine(message + " " + msg);
-            }
-        }
-
-        /// <summary>
         /// デバッグ用にメッセージを出力します。
         /// </summary>
         /// <param name="message">メッセージ</param>

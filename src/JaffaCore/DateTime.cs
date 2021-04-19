@@ -60,7 +60,7 @@ namespace Jaffa
                 differenceNow = value;
                 string to = Now.ToString(Core.MakeMessage(Core.Jaffa, "{TIME_FORMAT}"), fp);
 
-                Logging.Write(Core.MakeMessage(Core.Jaffa, Messages.JFW00002, new string[] { from, to }));
+                Logging.Write(Core.MakeMessage(Core.Jaffa, Messages.JFWI0002, new string[] { from, to }));
             }
         }
         private static System.TimeSpan differenceNow = new();

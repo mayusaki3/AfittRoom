@@ -19,9 +19,9 @@ namespace Jaffa.Diagnostics
         /// <param name="log">ログデータ</param>
         /// <param name="logName1">ログファイル名</param>
         /// <param name="logName2">ログファイル名（リネーム用）</param>
-#pragma warning disable 1998
+#pragma warning disable CS1998 // 非同期メソッドは、'await' 演算子がないため、同期的に実行されます
         private static async Task WriteLogBufferToFileAsync(LoggingData log, string logName1, string logName2)
-#pragma warning restore 1998
+#pragma warning restore CS1998 // 非同期メソッドは、'await' 演算子がないため、同期的に実行されます
         {
             Uri appUri = new(Path.GetDirectoryName(Core.StartupPath));
             Uri outUri = new(appUri, Environment.ExpandEnvironmentVariables(LoggingSettings.Folder));
