@@ -8,6 +8,19 @@ namespace Sansa.Model
     /// </summary>
     public class GLB_Chunk
     {
+        #region 定数
+
+        /// <summary>
+        /// チャンクタイプ
+        /// </summary>
+        public enum ChankType : UInt32
+        {
+            JSON = 0x4E4F534A,  // 'JSON' 構造化されたJSONコンテンツ
+            BIN = 0x004E4942    // ' BIN' バイナリバッファ
+        }
+
+        #endregion
+
         #region メソッド
 
         #region GLBファイルチャンク読み取り (Read)
@@ -20,17 +33,17 @@ namespace Sansa.Model
         {
             ChunkLength = reader.ReadUInt32();
 
-            UInt32 w_type = reader.ReadUInt32();
-            if (w_type != 0x4E4F534A &&
-                w_type != 0x004E4942)
+            ChankType w_type = (ChankType)reader.ReadUInt32();
+            if (w_type != ChankType.JSON &&
+                w_type != ChankType.BIN)
             {
-                throw new FormatException(Core.MakeMessage(Messages.SMBE0004));
+                throw new FormatException(Core.MakeMessage(Messages.SMBE0005));
             }
             ChunkType = w_type;
 
             if (ChunkLength > int.MaxValue)
             {
-                throw new FormatException(Core.MakeMessage(Messages.SMBE0005));
+                throw new FormatException(Core.MakeMessage(Messages.SMBE0006));
             }
 
             ChunkData = new byte[ChunkLength];
@@ -48,7 +61,7 @@ namespace Sansa.Model
         public void Write(BinaryWriter writer)
         {
             writer.Write(ChunkLength);
-            writer.Write(ChunkType);
+            writer.Write((UInt32)ChunkType);
             writer.Write(ChunkData);
         }
 
@@ -71,10 +84,8 @@ namespace Sansa.Model
 
         /// <summary>
         /// チャンクタイプ
-        /// 0x4E4F534A : 'JSON' 構造化されたJSONコンテンツ
-        /// 0x004E4942 : ' BIN' バイナリバッファ
         /// </summary>
-        public UInt32 ChunkType { get; set; }
+        public ChankType ChunkType { get; set; }
 
         #endregion
 

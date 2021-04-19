@@ -121,15 +121,18 @@
     <value>The magic of the GLB header is not glTF.</value>
   </data>
   <data name="SMBE0002" xml:space="preserve">
-    <value>There is no GLB chunk.</value>
+    <value>The version of the GLB header is not supported.</value>
   </data>
   <data name="SMBE0003" xml:space="preserve">
-    <value>The type of GLB chunk 0 is not JSON.</value>
+    <value>There is no GLB chunk.</value>
   </data>
   <data name="SMBE0004" xml:space="preserve">
-    <value>GLB chunk type is not JSON/BIN.</value>
+    <value>The type of GLB chunk 0 is not JSON.</value>
   </data>
   <data name="SMBE0005" xml:space="preserve">
+    <value>GLB chunk type is not JSON/BIN.</value>
+  </data>
+  <data name="SMBE0006" xml:space="preserve">
     <value>The GLB chunk length exceeds the support limit of this library.</value>
   </data>
   <data name="SMBI0001" xml:space="preserve">

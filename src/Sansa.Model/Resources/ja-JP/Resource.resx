@@ -121,15 +121,18 @@
     <value>GLBヘッダのマジックがglTFではありません。</value>
   </data>
   <data name="SMBE0002" xml:space="preserve">
-    <value>GLBチャンクがありません。</value>
+    <value>GLBヘッダのバージョンがサポート外です。</value>
   </data>
   <data name="SMBE0003" xml:space="preserve">
-    <value>GLBチャンク0のタイプがJSONではありません。</value>
+    <value>GLBチャンクがありません。</value>
   </data>
   <data name="SMBE0004" xml:space="preserve">
-    <value>GLBチャンクのタイプがJSON/BINではありません。</value>
+    <value>GLBチャンク0のタイプがJSONではありません。</value>
   </data>
   <data name="SMBE0005" xml:space="preserve">
+    <value>GLBチャンクのタイプがJSON/BINではありません。</value>
+  </data>
+  <data name="SMBE0006" xml:space="preserve">
     <value>GLBチャンク長が本ライブラリのサポート限界を超えています。</value>
   </data>
   <data name="SMBI0001" xml:space="preserve">
