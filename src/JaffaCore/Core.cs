@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Jaffa.Diagnostics;
+using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
 using System.Resources;
@@ -9,31 +10,73 @@ namespace Jaffa
     /// <summary>
     /// Jaffaフレームワーク・コア
     /// </summary>
-    public class Core
+    public static class Core
     {
-        #region コンストラクタ―
+        #region インナークラス
+
+        #region コアヘルパー (CoreHelper) [private]
 
         /// <summary>
-        /// コンストラクタ―
+        /// コアヘルパー
         /// </summary>
-        static Core()
+        private class CoreHelper
         {
-            // 起動パス記憶
-            StartupPath = Process.GetCurrentProcess().MainModule.FileName;
+            #region コンストラクタ―/デストラクター
 
-            // リソースマネージャ初期化（国際化対応リスト）
-            Assembly thisAsm = Assembly.GetExecutingAssembly();
-            SetResource(JaffaCulture, "Jaffa.Resources.CultureList", thisAsm);
+            /// <summary>
+            /// コンストラクタ―
+            /// </summary>
+            public CoreHelper()
+                : base()
+            {
+                // 起動パス記憶
+                startupPath = Process.GetCurrentProcess().MainModule.FileName;
 
-            // 国際化対応の初期化
-            International.Initialize();
+                // リソースマネージャ初期化（国際化対応リスト）
+                Assembly thisAsm = Assembly.GetExecutingAssembly();
+                resManLst = new();
+                SetResource(JaffaCulture,"Jaffa.Resources.CultureList", thisAsm);
 
-            // リソースマネージャ初期化（Jaffaコアリソース）
-            SetResource(Jaffa, "Jaffa.Resources.{Culture}.Resource", thisAsm);
+                // 国際化対応の初期化
+                International.Initialize();
 
-            // カルチャー変更イベント設定
-            International.CultureChanged += International_CultureChanged;
+                // リソースマネージャ初期化（Jaffaコアリソース）
+                SetResource(Jaffa, "Jaffa.Resources." + International.CurrentCulture + ".Resource", thisAsm);
+
+                // カルチャー変更イベント設定
+                International.CultureChanged += International_CultureChanged;
+
+                // 開始メッセージ
+                if (LoggingSettings.FrameworkMessage)
+                {
+                    Logging.Write(MakeMessage(Jaffa, Messages.JFW00001, new string[] { Version }));
+                }
+            }
+
+            #endregion
+
+            #region イベント
+
+            #region カルチャー変更イベント (International_CultureChanged)
+
+            /// <summary>
+            /// カルチャー変更イベント
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private static void International_CultureChanged(object sender, System.EventArgs e)
+            {
+                // リソースマネージャ変更（Jaffaコアリソース）
+                Assembly thisAsm = Assembly.GetExecutingAssembly();
+                Core.SetResource(Jaffa, "Jaffa.Resources." + International.CurrentCulture + ".Resource", thisAsm);
+            }
+
+            #endregion
+
+            #endregion
         }
+
+        #endregion
 
         #endregion
 
@@ -51,23 +94,12 @@ namespace Jaffa
 
         #endregion
 
-        #region イベント
-
-        #region カルチャー変更イベント (International_CultureChanged)
+        #region 変数 
 
         /// <summary>
-        /// カルチャー変更イベント
+        /// コアヘルパー
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private static void International_CultureChanged(object sender, System.EventArgs e)
-        {
-            // リソースマネージャ変更（Jaffaコアリソース）
-            Assembly thisAsm = Assembly.GetExecutingAssembly();
-            Core.SetResource(Jaffa, "Jaffa.Resources.{Culture}.Resource", thisAsm);
-        }
-
-        #endregion
+        private static CoreHelper helper = new();
 
         #endregion
 
@@ -79,18 +111,17 @@ namespace Jaffa
         /// リソースマネージャを設定します。
         /// </summary>
         /// <param name="name">リソース名</param>
-        /// <param name="resourcePath">リソースパス名（リソースパス名内の{Culture}は現在のカルチャー名に置き換わります）</param>
+        /// <param name="resourcePath">リソースパス名</param>
         /// <param name="assembly">リソースが格納されたアセンブリ</param>
         public static void SetResource(string name, string resourcePath, Assembly assembly)
         {
-            resourcePath = resourcePath.Replace("{Culture}", International.CurrentCulture).Replace('-', '_');
-            if (ResManLst.Contains(name) == true)
+            if (resManLst.Contains(name) == true)
             {
-                ResManLst[name] = new ResourceManager(resourcePath, assembly);
+                resManLst[name] = new ResourceManager(resourcePath.Replace('-', '_'), assembly);
             }
             else
             {
-                ResManLst.Add(name, new ResourceManager(resourcePath, assembly));
+                resManLst.Add(name, new ResourceManager(resourcePath.Replace('-', '_'), assembly));
             }
         }
 
@@ -105,7 +136,7 @@ namespace Jaffa
         /// <returns>リソースマネージャ</returns>
         public static ResourceManager Resource(string name)
         {
-            return ResManLst[name] as ResourceManager;
+            return resManLst[name] as ResourceManager;
         }
 
         #endregion
@@ -143,9 +174,9 @@ namespace Jaffa
 
         #region プロパティ
 
-        #region リソースマネージャーリスト ([R/W] ResManLst) [private]
+        #region リソースマネージャーリスト ([R/W] resManLst) [private]
 
-        private static Hashtable ResManLst { get; } = new();
+        private static Hashtable resManLst { get; set; } // 初期化が競合するのでCoreHelper側で初期化
 
         #endregion
 
@@ -154,7 +185,14 @@ namespace Jaffa
         /// <summary>
         /// 起動パスを参照します。
         /// </summary>
-        public static string StartupPath { get; }
+        public static string StartupPath
+        {
+            get
+            {
+                return startupPath;
+            }
+        }
+        private static string startupPath; // 初期化が競合するのでCoreHelper側で初期化
 
         #endregion
 

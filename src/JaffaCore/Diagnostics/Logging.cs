@@ -68,17 +68,6 @@ namespace Jaffa.Diagnostics
         /// <param name="type">ログタイプ</param>
         public static void Write(List<string> messages, LogType type = LogType.Information)
         {
-            // 開始メッセージ
-            if (LoggingSettings.FrameworkMessage == false)
-            {
-                IsUseStartMessage = false;
-            }
-            if (IsUseStartMessage == true)
-            {
-                IsUseStartMessage = false;
-                Write(Core.MakeMessage(Core.Jaffa, Messages.JFWI0001, new string[] { Core.Version }));
-            }
-
             LoggingData data = new(Jaffa.DateTime.Now, type, messages);
             DebugWrite(data);
             loggingBuffer.Enqueue(data);
@@ -105,6 +94,51 @@ namespace Jaffa.Diagnostics
         private static void DebugWrite(string message)
         {
             System.Diagnostics.Debug.WriteLine(message);
+        }
+
+        /// <summary>
+        /// デバッグ用にメッセージとデータを出力します。
+        /// </summary>
+        /// <param name="message">メッセージ</param>
+        /// <param name="data">データリスト</param>
+        [Conditional("DEBUG")]
+        private static void DebugWrite(string message, LoggingData data)
+        {
+            foreach (string msg in data.ToStrings())
+            {
+                System.Diagnostics.Debug.WriteLine(message + " " + msg);
+            }
+        }
+
+        /// <summary>
+        /// デバッグ用にメッセージとデータを出力します。
+        /// </summary>
+        /// <param name="message">メッセージ</param>
+        /// <param name="data">データリスト</param>
+        [Conditional("DEBUG")]
+        private static void DebugWrite(string message, ConcurrentQueue<LoggingData> data)
+        {
+            foreach (LoggingData log in data)
+            {
+                foreach (string msg in log.ToStrings())
+                {
+                    System.Diagnostics.Debug.WriteLine(message + " " + msg);
+                }
+            }
+        }
+
+        /// <summary>
+        /// デバッグ用にメッセージとデータを出力します。
+        /// </summary>
+        /// <param name="message">メッセージ</param>
+        /// <param name="data">データリスト</param>
+        [Conditional("DEBUG")]
+        private static void DebugWrite(string message, List<string> data)
+        {
+            foreach (string msg in data)
+            {
+                System.Diagnostics.Debug.WriteLine(message + " " + msg);
+            }
         }
 
         /// <summary>
@@ -241,12 +275,9 @@ namespace Jaffa.Diagnostics
             rt.Add(exp.Message);
             if (exp.StackTrace != null)
             {
-                foreach (string tr in exp.StackTrace.Split(new char[] { '\r', '\n' }))
+                foreach (string tr in exp.StackTrace.Remove('\r').Split(new char[] { '\n' }))
                 {
-                    if (tr.Length > 0)
-                    {
-                        rt.Add("\t" + tr);
-                    }
+                    rt.Add("\t" + tr);
                 }
             }
             return rt;
@@ -439,15 +470,6 @@ namespace Jaffa.Diagnostics
         /// ログ書き込みタスクキューイング数を参照または設定します。
         /// </summary>
         private static int WriteTaskQueueCount { get; set; } = 0;
-
-        #endregion
-
-        #region Jaffa起動メッセージ出力使用を参照または設定 ([R/W] IsUseStartMessage) [private]
-
-        /// <summary>
-        /// Jaffa起動メッセージ出力使用
-        /// </summary>
-        private static bool IsUseStartMessage { get; set; } = true;
 
         #endregion
 
