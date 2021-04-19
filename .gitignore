@@ -1,3 +1,7 @@
 .vs
 src/JaffaCore/obj/
 src/JaffaCore/bin/
+src/Sansa.Model/obj/
+src/Sansa.Model/bin/
+src/VRoomWin/obj/
+src/VRoomWin/bin/
