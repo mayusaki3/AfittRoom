@@ -30,23 +30,28 @@
         public const string SMBE0001 = "SMBE0001 {SMBE0001}";
 
         /// <summary>
-        /// GLBチャンクがない
+        /// GLBヘッダバージョンがサポート外
         /// </summary>
         public const string SMBE0002 = "SMBE0002 {SMBE0002}";
 
         /// <summary>
-        /// GLBチャンク0のタイプがJSONではない
+        /// GLBチャンクがない
         /// </summary>
         public const string SMBE0003 = "SMBE0003 {SMBE0003}";
 
         /// <summary>
-        /// GLBチャンクのタイプがJSON/BINではない
+        /// GLBチャンク0のタイプがJSONではない
         /// </summary>
         public const string SMBE0004 = "SMBE0004 {SMBE0004}";
 
         /// <summary>
-        /// GLBチャンク長が本ライブラリのサポート限界を超過
+        /// GLBチャンクのタイプがJSON/BINではない
         /// </summary>
         public const string SMBE0005 = "SMBE0005 {SMBE0005}";
+
+        /// <summary>
+        /// GLBチャンク長が本ライブラリのサポート限界を超過
+        /// </summary>
+        public const string SMBE0006 = "SMBE0006 {SMBE0006}";
     }
 }
