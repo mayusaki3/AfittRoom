@@ -5,28 +5,72 @@ namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+#pragma warning disable IDE1006 // 命名スタイル
+
         /// <summary>
-        /// 
+        /// 拡張情報リスト
         /// </summary>
-        public string[] extensionsUsed { get; set; }
+        public List<string> extensionsUsed { get; set; } = null;
 
-        //public Extensions extensions { get; set; }
-        //public Asset asset { get; set; }
-        //public Buffer[] buffers { get; set; }
-        //public Bufferview[] bufferViews { get; set; }
-        //public Accessor[] accessors { get; set; }
-        //public Image[] images { get; set; }
-        //public Sampler[] samplers { get; set; }
-        //public Texture[] textures { get; set; }
-        //public Material[] materials { get; set; }
-        //public Mesh[] meshes { get; set; }
+        /// <summary>
+        /// 拡張情報
+        /// </summary>
+        public Extensions extensions { get; set; } = null;
 
-        //public Skin[] skins { get; set; }
+        /// <summary>
+        /// TODO: 説明
+        /// </summary>
+        public Asset asset { get; set; } = null;
+
+        /// <summary>
+        /// TODO: 説明
+        /// </summary>
+        public Buffer[] buffers { get; set; } = null;
+
+        /// <summary>
+        /// TODO: 説明
+        /// </summary>
+        public Bufferview[] bufferViews { get; set; } = null;
+
+        /// <summary>
+        /// TODO: 説明
+        /// </summary>
+        public Accessor[] accessors { get; set; } = null;
+
+        /// <summary>
+        /// TODO: 説明
+        /// </summary>
+        public Image[] images { get; set; } = null;
+
+        /// <summary>
+        /// TODO: 説明
+        /// </summary>
+        public Sampler[] samplers { get; set; } = null;
+
+        /// <summary>
+        /// テクスチャーリスト
+        /// </summary>
+        public Texture[] textures { get; set; } = null;
+
+        /// <summary>
+        /// マテリアルリスト
+        /// </summary>
+        public Material[] materials { get; set; } = null;
+
+        /// <summary>
+        /// メッシュリスト
+        /// </summary>
+        public Mesh[] meshes { get; set; } = null;
+
+        /// <summary>
+        /// スキンリスト
+        /// </summary>
+        public Skin[] skins { get; set; } = null;
 
         /// <summary>
         /// ノードリスト
         /// </summary>
-        public Node[] nodes { get; set; }
+        public Node[] nodes { get; set; } = null;
 
         /// <summary>
         /// シーンリスト
@@ -36,6 +80,8 @@ namespace Sansa.Model
         /// <summary>
         /// シーンNo.（シーンリストのインデックス）
         /// </summary>
-        public int scene { get; set; } = -1;
+        public int? scene { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
     }
 }

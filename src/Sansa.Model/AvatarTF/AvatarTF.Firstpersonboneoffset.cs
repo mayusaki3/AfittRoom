@@ -1,18 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
-         public class Firstpersonboneoffset
+        /// <summary>
+        /// VRM拡張：一人時のヘッドセットの目標位置
+        /// </summary>
+        public class Firstpersonboneoffset
         {
-            public int x { get; set; }
-            public float y { get; set; }
-            public int z { get; set; }
+#pragma warning disable IDE1006 // 命名スタイル
+
+            /// <summary>
+            /// X座標
+            /// </summary>
+            public double? x { get; set; } = null;
+
+            /// <summary>
+            /// Y座標
+            /// </summary>
+            public double? y { get; set; } = null;
+
+            /// <summary>
+            /// Z座標
+            /// </summary>
+            public double? z { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

@@ -1,19 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// VRM拡張
+        /// TODO: 説明
+        /// </summary>
         public class Keywordmap
         {
-            public bool MTOON_OUTLINE_COLOR_FIXED { get; set; }
-            public bool MTOON_OUTLINE_WIDTH_WORLD { get; set; }
-            public bool _ALPHATEST_ON { get; set; }
-            public bool _NORMALMAP { get; set; }
+#pragma warning disable IDE1006 // 命名スタイル
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public bool? MTOON_OUTLINE_COLOR_FIXED { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public bool? MTOON_OUTLINE_WIDTH_WORLD { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public bool? _ALPHATEST_ON { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public bool? _NORMALMAP { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

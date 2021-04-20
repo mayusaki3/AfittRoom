@@ -1,24 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// VRM拡張：ノードへのヒューマノイドボーンの割り当て
+        /// </summary>
         public class Humanoid
         {
-            public Humanbone[] humanBones { get; set; }
-            public float armStretch { get; set; }
-            public float legStretch { get; set; }
-            public float upperArmTwist { get; set; }
-            public float lowerArmTwist { get; set; }
-            public float upperLegTwist { get; set; }
-            public float lowerLegTwist { get; set; }
-            public int feetSpacing { get; set; }
-            public bool hasTranslationDoF { get; set; }
+#pragma warning disable IDE1006 // 命名スタイル
+
+            /// <summary>
+            /// ヒューマノイドボーンリスト
+            /// </summary>
+            public List<Humanbone> humanBones { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? armStretch { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? legStretch { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? upperArmTwist { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? lowerArmTwist { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? upperLegTwist { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? lowerLegTwist { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? feetSpacing { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public bool? hasTranslationDoF { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

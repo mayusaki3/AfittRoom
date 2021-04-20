@@ -7,6 +7,8 @@
         /// </summary>
         public class Node
         {
+#pragma warning disable IDE1006 // 命名スタイル
+
             /// <summary>
             /// 子ノードNo.（ノードリストのインデックス）
             /// </summary>
@@ -20,27 +22,29 @@
             /// <summary>
             /// 平行移動 [x, y, z]
             /// </summary>
-            public float[] translation { get; set; } = null;
+            public double[] translation { get; set; } = null;
 
             /// <summary>
             /// 回転 [x, y, z, w]
             /// </summary>
-            public float[] rotation { get; set; } = null;
+            public double[] rotation { get; set; } = null;
 
             /// <summary>
             /// スケール倍率 [x, y, z]
             /// </summary>
-            public float[] scale { get; set; } = null;
+            public double[] scale { get; set; } = null;
 
             /// <summary>
             /// メッシュNo.（メッシュリストのインデックス）
             /// </summary>
-            public int mesh { get; set; } = -1;
+            public int? mesh { get; set; } = null;
 
             /// <summary>
             /// スキンNo.（スキンリストのインデックス）
             /// </summary>
-            public int skin { get; set; } = -1;
+            public int? skin { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

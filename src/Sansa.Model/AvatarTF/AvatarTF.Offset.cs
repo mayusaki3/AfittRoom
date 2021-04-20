@@ -1,18 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// VRM拡張
+        /// TODO: 説明
+        /// </summary>
         public class Offset
         {
-            public float x { get; set; }
-            public float y { get; set; }
-            public float z { get; set; }
+#pragma warning disable IDE1006 // 命名スタイル
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? x { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? y { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public double? z { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

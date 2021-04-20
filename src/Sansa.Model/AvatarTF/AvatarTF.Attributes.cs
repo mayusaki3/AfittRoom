@@ -1,20 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// アトリビュート
+        /// </summary>
         public class Attributes
         {
-            public int POSITION { get; set; }
-            public int NORMAL { get; set; }
-            public int TEXCOORD_0 { get; set; }
-            public int JOINTS_0 { get; set; }
-            public int WEIGHTS_0 { get; set; }
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? POSITION { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? NORMAL { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? TEXCOORD_0 { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? JOINTS_0 { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? WEIGHTS_0 { get; set; } = null;
         }
     }
 }

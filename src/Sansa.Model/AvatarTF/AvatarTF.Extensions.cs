@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.IO;
-using Jaffa.Diagnostics;
-using System.Runtime.Serialization;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
-    /// <summary>
-    /// アバター
-    /// </summary>
     public partial class AvatarTF
     {
-        [DataContract]
+        /// <summary>
+        /// 拡張情報
+        /// </summary>
         public class Extensions
         {
-            public VRM VRM { get; set; }
+            /// <summary>
+            /// VRM拡張
+            /// </summary>
+            public VRM VRM { get; set; } = null;
+
+            /// <summary>
+            /// クロノス拡張：マテリアルユニット
+            /// </summary>
+            public KHR_Materials_Unlit KHR_Materials_Unlit { get; set; } = null;
         }
     }
 }

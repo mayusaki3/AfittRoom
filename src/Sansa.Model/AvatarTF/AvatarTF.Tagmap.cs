@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// VRM拡張
+        /// TODO: 説明
+        /// </summary>
         public class Tagmap
         {
-            public string RenderType { get; set; }
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public string RenderType { get; set; } = null;
         }
     }
 }

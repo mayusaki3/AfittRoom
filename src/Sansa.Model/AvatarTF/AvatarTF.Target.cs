@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// ターゲット
+        /// </summary>
         public class Target
         {
-            public int POSITION { get; set; }
-            public int NORMAL { get; set; }
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? POSITION { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? NORMAL { get; set; } = null;
         }
     }
 }

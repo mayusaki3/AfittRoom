@@ -1,19 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// TODO: 説明
+        /// </summary>
         public class Sampler
         {
-            public int magFilter { get; set; }
-            public int minFilter { get; set; }
-            public int wrapS { get; set; }
-            public int wrapT { get; set; }
+#pragma warning disable IDE1006 // 命名スタイル
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? magFilter { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? minFilter { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? wrapS { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? wrapT { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

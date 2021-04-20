@@ -8,16 +8,54 @@ namespace Sansa.Model
 {
     public partial class AvatarTF
     {
-        public class Material
+        /// <summary>
+        /// マテリアル
+        /// </summary>
+        public partial class Material
         {
-            public string name { get; set; }
-            public Pbrmetallicroughness pbrMetallicRoughness { get; set; }
-            public Normaltexture normalTexture { get; set; }
-            public Emissivetexture emissiveTexture { get; set; }
-            public int[] emissiveFactor { get; set; }
-            public bool doubleSided { get; set; }
-            public string alphaMode { get; set; }
-            public string extensions { get; set; }
+#pragma warning disable IDE1006 // 命名スタイル
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public string name { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public Pbrmetallicroughness pbrMetallicRoughness { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public Normaltexture normalTexture { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public Emissivetexture emissiveTexture { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int[] emissiveFactor { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public bool? doubleSided { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public string alphaMode { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public Extensions extensions { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

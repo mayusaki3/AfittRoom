@@ -1,18 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sansa.Model
+﻿namespace Sansa.Model
 {
     public partial class AvatarTF
     {
+        /// <summary>
+        /// スキン
+        /// </summary>
         public class Skin
         {
-            public int inverseBindMatrices { get; set; }
-            public int[] joints { get; set; }
-            public int skeleton { get; set; }
+#pragma warning disable IDE1006 // 命名スタイル
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? inverseBindMatrices { get; set; } = null;
+
+            /// <summary>
+            /// ジョイントリスト（ノードリストのインデックス）
+            /// </summary>
+            public int[] joints { get; set; } = null;
+
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public int? skeleton { get; set; } = null;
+
+#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }
