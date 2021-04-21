@@ -58,7 +58,7 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int? _OutlineScaledMaxDistance { get; set; } = null;
+            public double? _OutlineScaledMaxDistance { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
