@@ -37,12 +37,12 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double[] max { get; set; } = null;
+            public double?[] max { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double[] min { get; set; } = null;
+            public double?[] min { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明

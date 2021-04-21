@@ -48,12 +48,12 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int[] bones { get; set; } = null;
+            public int?[] bones { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int[] colliderGroups { get; set; } = null;
+            public int?[] colliderGroups { get; set; } = null;
 
 #pragma warning restore IDE1006 // 命名スタイル
         }

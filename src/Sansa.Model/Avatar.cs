@@ -26,9 +26,11 @@ namespace Sansa.Model
             using var rd = new StreamReader(ms, Encoding.UTF8);
             string js = rd.ReadToEnd();
 
-            using (StreamWriter sw = new(@"C:\WORKPLACE\VRoom\LOAD.txt"))
+            string fnam = @"C:\WORKPLACE\VRoom\LOAD.txt";
+            using (StreamWriter sw = new(fnam))
             {
                 sw.WriteLine(js.Replace(",", ",\r\n"));
+                Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
             }
 
             AvaterTF = JsonSerializer.Deserialize<AvatarTF>(js);
@@ -54,20 +56,25 @@ namespace Sansa.Model
             chunk0.ChunkType = GLB_Chunk.ChankType.JSON;
             JsonSerializerOptions opt = new()
             {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
             };
-            string js = JsonSerializer.Serialize(AvaterTF, opt);
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableInt());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableDouble());
 
-            using (StreamWriter sw = new(@"C:\WORKPLACE\VRoom\SAVE.txt"))
+            string js = JsonSerializer.Serialize(AvaterTF, opt);
+            byte[] jsbytes = System.Text.Encoding.UTF8.GetBytes(js);
+            chunk0.ChunkLength = (uint)(jsbytes.Length + jsbytes.Length % 4);
+            chunk0.ChunkData = new byte[chunk0.ChunkLength];
+            jsbytes.CopyTo(chunk0.ChunkData, 0);
+            for (int i = jsbytes.Length; i < chunk0.ChunkLength; i++) chunk0.ChunkData[i] = 0x20;
+            ChunkList.Add(chunk0);
+
+
+            string fnam = @"C:\WORKPLACE\VRoom\SAVE.txt";
+            using (StreamWriter sw = new(fnam))
             {
                 sw.WriteLine(js.Replace(",",",\r\n"));
-            }
-
-            js = JsonSerializer.Serialize(new Sansa.Model.AvatarTF(), opt);
-
-            using (StreamWriter sw = new(@"C:\WORKPLACE\VRoom\SAVE_NEW.txt"))
-            {
-                sw.WriteLine(js.Replace(",", ",\r\n"));
+                Logging.Write("出力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
             }
 
         }

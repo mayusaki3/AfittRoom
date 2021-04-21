@@ -17,38 +17,86 @@ namespace VRoomWin
             LoggingSettings.FileName = @"applog[@].txt";
             LoggingSettings.LoggingMode = LoggingMode.Week;
 
-            International.ChangeCultureFromDisplayLanguageName("en-US");
+            Logging.Write("実行ログを " + LoggingSettings.Folder + " に出力します。");
 
-            Logging.LogWriteWaiting = false;
-
-            try
-            {
-                Avatar tm = new();
-                GLB_File gf = new();
-                //gf.Load(@"mayusaki_chan.vrm");
-                gf.Load(@"白魔道士てきとうv2.04.vrm");
-
-                tm.Load(gf.ChunkList);
-
-                tm.Save(out List<GLB_Chunk> clst);
-
-                //gf.Save(@"mayusaki_chan_1.vrm");
-                gf.Save(@"白魔道士てきとうv2.04_1.vrm");
-
-                // ----
-
-                //    gf.Load(@"白魔道士てきとうv2.04.vrm");
-                //    tm.Load(gf.ChunkList);
-
-
-            }
-            catch (Exception e)
-            {
-                Logging.Write(Logging.ExceptionToList(e), LogType.Error);
-            }
-
-            Environment.Exit(0);
+            //    International.ChangeCultureFromDisplayLanguageName("en-US");
 
         }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            Logging.LogWriting += Logging_LogWriting;
+            Logging.LogWriteWaiting = false;
+
+        }
+
+        private void btnInOpn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new();
+            dlg.Filter = "VRMファイル(*.vrm)|*.vrm|すべてのファイル(*.*)|*.*";
+            dlg.FilterIndex = 1;
+            dlg.Title = "対象のファイルを選択してください。";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                txtInVrm.Text = dlg.FileName;
+                txtOutVrm.Text = txtInVrm.Text.Replace(".vrm", "_save.vrm");
+            }
+        }
+
+        private void btnOutOpn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new();
+            dlg.FileName = txtOutVrm.Text;
+            dlg.Filter = "VRMファイル(*.vrm)|*.vrm|すべてのファイル(*.*)|*.*";
+            dlg.FilterIndex = 1;
+            dlg.Title = "保存先のファイルを指定してください。";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                txtOutVrm.Text = dlg.FileName;
+            }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                glb.Load(txtInVrm.Text);
+
+                ava.Load(glb.ChunkList);
+            }
+            catch (Exception ex)
+            {
+                Logging.Write(Logging.ExceptionToList(ex), LogType.Error);
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ava.Save(out List<GLB_Chunk> clst);
+
+                glb.ChunkList[0] = clst[0];
+
+                glb.Save(txtOutVrm.Text);
+            }
+            catch (Exception ex)
+            {
+                Logging.Write(Logging.ExceptionToList(ex), LogType.Error);
+            }
+        }
+
+        private void Logging_LogWriting(object sender, LogWritingEventArgs e)
+        {
+            foreach (string msg in e.Messages)
+            {
+                txtLog.Text += msg + "\r\n";
+            }
+            txtLog.SelectionStart = txtLog.Text.Length;
+            txtLog.ScrollToCaret();
+        }
+
+        GLB_File glb = new();
+        Avatar ava = new();
     }
 }

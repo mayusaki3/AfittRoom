@@ -13,7 +13,7 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int[] curve { get; set; } = null;
+            public int?[] curve { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明

@@ -12,7 +12,7 @@
             /// <summary>
             /// 子ノードNo.（ノードリストのインデックス）
             /// </summary>
-            public int[] children { get; set; } = null;
+            public int?[] children { get; set; } = null;
 
             /// <summary>
             /// ノード名
@@ -22,17 +22,17 @@
             /// <summary>
             /// 平行移動 [x, y, z]
             /// </summary>
-            public double[] translation { get; set; } = null;
+            public double?[] translation { get; set; } = null;
 
             /// <summary>
             /// 回転 [x, y, z, w]
             /// </summary>
-            public double[] rotation { get; set; } = null;
+            public double?[] rotation { get; set; } = null;
 
             /// <summary>
             /// スケール倍率 [x, y, z]
             /// </summary>
-            public double[] scale { get; set; } = null;
+            public double?[] scale { get; set; } = null;
 
             /// <summary>
             /// メッシュNo.（メッシュリストのインデックス）

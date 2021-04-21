@@ -10,6 +10,22 @@
 #pragma warning disable IDE1006 // 命名スタイル
 
             /// <summary>
+            /// TODO: どうする
+            /// </summary>
+            public enum ViolentUssageName
+            {
+                /// <summary>
+                /// 許可
+                /// </summary>
+                Allow,
+
+                /// <summary>
+                /// 不許可
+                /// </summary>
+                Disallow
+            }
+
+            /// <summary>
             /// バージョン
             /// </summary>
             public string version { get; set; } = null;
@@ -20,7 +36,7 @@
             public string author { get; set; } = null;
 
             /// <summary>
-            /// 連絡先
+            /// 作者（代表者）への連絡先
             /// </summary>
             public string contactInformation { get; set; } = null;
 

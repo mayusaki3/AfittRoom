@@ -38,7 +38,7 @@ namespace Sansa.Model
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int[] emissiveFactor { get; set; } = null;
+            public int?[] emissiveFactor { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明

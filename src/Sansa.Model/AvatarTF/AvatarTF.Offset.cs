@@ -13,17 +13,17 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? x { get; set; } = null;
+            public double? x { get; set; } = 0;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? y { get; set; } = null;
+            public double? y { get; set; } = 0;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? z { get; set; } = null;
+            public double? z { get; set; } = 0;
 
 #pragma warning restore IDE1006 // 命名スタイル
         }

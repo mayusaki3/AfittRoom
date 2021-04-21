@@ -17,7 +17,7 @@
             /// <summary>
             /// ジョイントリスト（ノードリストのインデックス）
             /// </summary>
-            public int[] joints { get; set; } = null;
+            public int?[] joints { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明

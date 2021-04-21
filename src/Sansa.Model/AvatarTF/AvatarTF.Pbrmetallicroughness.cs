@@ -23,7 +23,7 @@ namespace Sansa.Model
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int[] baseColorFactor { get; set; } = null;
+            public int?[] baseColorFactor { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明

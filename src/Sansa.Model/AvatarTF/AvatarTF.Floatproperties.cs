@@ -38,7 +38,7 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int? _ShadeToony { get; set; } = null;
+            public double? _ShadeToony { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -63,7 +63,7 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int? _OutlineLightingMix { get; set; } = null;
+            public double? _OutlineLightingMix { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
