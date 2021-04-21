@@ -65,7 +65,7 @@ namespace VRoomWin
             this.btnInOpn.TabIndex = 2;
             this.btnInOpn.Text = "...";
             this.btnInOpn.UseVisualStyleBackColor = true;
-            this.btnInOpn.Click += new System.EventHandler(this.btnInOpn_Click);
+            this.btnInOpn.Click += new System.EventHandler(this.BtnInOpn_Click);
             // 
             // btnLoad
             // 
@@ -75,7 +75,7 @@ namespace VRoomWin
             this.btnLoad.TabIndex = 3;
             this.btnLoad.Text = "ロード";
             this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.btnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
             // 
             // txtLog
             // 
@@ -119,7 +119,7 @@ namespace VRoomWin
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "セーブ";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // btnOutOpn
             // 
@@ -129,7 +129,7 @@ namespace VRoomWin
             this.btnOutOpn.TabIndex = 9;
             this.btnOutOpn.Text = "...";
             this.btnOutOpn.UseVisualStyleBackColor = true;
-            this.btnOutOpn.Click += new System.EventHandler(this.btnOutOpn_Click);
+            this.btnOutOpn.Click += new System.EventHandler(this.BtnOutOpn_Click);
             // 
             // MainForm
             // 

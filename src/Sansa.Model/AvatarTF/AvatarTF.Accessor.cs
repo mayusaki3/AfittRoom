@@ -3,7 +3,7 @@
     public partial class AvatarTF
     {
         /// <summary>
-        /// TODO: 説明
+        /// アクセサ
         /// </summary>
         public class Accessor
         {
@@ -11,6 +11,8 @@
 
             /// <summary>
             /// TODO: 説明
+            /// バッファービューのインデックス
+            /// 未定義の場合は、スパース オブジェクトでインデックスと値のバッファ ビューを探します。
             /// </summary>
             public int? bufferView { get; set; } = null;
 

@@ -33,7 +33,7 @@ namespace Sansa.Model
                 Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
             }
 
-            AvaterTF = JsonSerializer.Deserialize<AvatarTF>(js);
+            AvaterTF.rootobject = JsonSerializer.Deserialize<AvatarTF.RootObject>(js);
 
 
 
@@ -61,7 +61,7 @@ namespace Sansa.Model
             opt.Converters.Add(new AvatarTF.JsonConverterForNullableInt());
             opt.Converters.Add(new AvatarTF.JsonConverterForNullableDouble());
 
-            string js = JsonSerializer.Serialize(AvaterTF, opt);
+            string js = JsonSerializer.Serialize(AvaterTF.rootobject, opt);
             byte[] jsbytes = System.Text.Encoding.UTF8.GetBytes(js);
             chunk0.ChunkLength = (uint)(jsbytes.Length + jsbytes.Length % 4);
             chunk0.ChunkData = new byte[chunk0.ChunkLength];
@@ -71,11 +71,9 @@ namespace Sansa.Model
 
 
             string fnam = @"C:\WORKPLACE\VRoom\SAVE.txt";
-            using (StreamWriter sw = new(fnam))
-            {
-                sw.WriteLine(js.Replace(",",",\r\n"));
-                Logging.Write("出力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
-            }
+            using StreamWriter sw = new(fnam);
+            sw.WriteLine(js.Replace(",", ",\r\n"));
+            Logging.Write("出力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
 
         }
 
@@ -100,7 +98,7 @@ namespace Sansa.Model
 
         #region アバター
 
-        public AvatarTF AvaterTF { get; set; } = null;
+        public AvatarTF AvaterTF { get; } = new();
 
         #endregion
 

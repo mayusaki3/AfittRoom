@@ -3,24 +3,25 @@
     public partial class AvatarTF
     {
         /// <summary>
-        /// TODO: 説明
+        /// バッファービュー
+        /// 一般的にバッファのサブセットを表すバッファ内のビューを表します。
         /// </summary>
         public class Bufferview
         {
 #pragma warning disable IDE1006 // 命名スタイル
 
             /// <summary>
-            /// TODO: 説明
+            /// バッファのインデックス
             /// </summary>
             public int? buffer { get; set; } = null;
 
             /// <summary>
-            /// TODO: 説明
+            /// バッファへのオフセット（byte単位）
             /// </summary>
             public int? byteOffset { get; set; } = null;
 
             /// <summary>
-            /// TODO: 説明
+            /// bufferViewの長さ（byte単位）
             /// </summary>
             public int? byteLength { get; set; } = null;
 

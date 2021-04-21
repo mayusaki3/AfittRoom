@@ -30,7 +30,7 @@ namespace VRoomWin
 
         }
 
-        private void btnInOpn_Click(object sender, EventArgs e)
+        private void BtnInOpn_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new();
             dlg.Filter = "VRMファイル(*.vrm)|*.vrm|すべてのファイル(*.*)|*.*";
@@ -43,7 +43,7 @@ namespace VRoomWin
             }
         }
 
-        private void btnOutOpn_Click(object sender, EventArgs e)
+        private void BtnOutOpn_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new();
             dlg.FileName = txtOutVrm.Text;
@@ -56,7 +56,7 @@ namespace VRoomWin
             }
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void BtnLoad_Click(object sender, EventArgs e)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace VRoomWin
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace VRoomWin
             txtLog.ScrollToCaret();
         }
 
-        GLB_File glb = new();
-        Avatar ava = new();
+        readonly GLB_File glb = new();
+        readonly Avatar ava = new();
     }
 }
