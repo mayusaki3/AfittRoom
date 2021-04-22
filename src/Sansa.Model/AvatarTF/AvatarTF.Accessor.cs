@@ -1,197 +1,160 @@
-﻿namespace Sansa.Model
+﻿using System.Collections.Generic;
+
+namespace Sansa.Model
 {
     public partial class AvatarTF
     {
         /// <summary>
         /// アクセサ
+        /// <br/>型付けされたビューを bufferView に入力します。
+        /// <br/>bufferView は生のバイナリデータを含みます。
+        /// <br/>アクセサは、WebGLの vertexAttribPointer() がバッファ内の属性を定義するのと同様に、
+        /// bufferView または bufferView のサブセットに型付けされたビューを提供します。
         /// </summary>
+        /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.schema.json
-        /// <remarks＞
+        /// </remarks>
         public class Accessor
         {
 #pragma warning disable IDE1006 // 命名スタイル
 
-
-            /*
-
-                "$schema": "http://json-schema.org/draft-04/schema",
-                "title": "Accessor",
-                "type": "object",
-                "description": "A typed view into a bufferView.  A bufferView contains raw binary data.  An accessor provides a typed view into a bufferView or a subset of a bufferView similar to how WebGL's `vertexAttribPointer()` defines an attribute in a buffer.",
-                "allOf": [ { "$ref": "glTFChildOfRootProperty.schema.json" } ],
-                "properties": {
-                    "bufferView": {
-                        "allOf": [ { "$ref": "glTFid.schema.json" } ],
-                        "description": "The index of the bufferView.",
-                        "gltf_detailedDescription": "The index of the bufferView. When not defined, accessor must be initialized with zeros; `sparse` property or extensions could override zeros with actual values."
-                    },
-                    "byteOffset": {
-                        "type": "integer",
-                        "description": "The offset relative to the start of the bufferView in bytes.",
-                        "minimum": 0,
-                        "default": 0,
-                        "gltf_detailedDescription": "The offset relative to the start of the bufferView in bytes.  This must be a multiple of the size of the component datatype.",
-                        "gltf_webgl": "`vertexAttribPointer()` offset parameter"
-                    },
-                    "componentType": {
-                        "description": "The datatype of components in the attribute.",
-                        "gltf_detailedDescription": "The datatype of components in the attribute.  All valid values correspond to WebGL enums.  The corresponding typed arrays are `Int8Array`, `Uint8Array`, `Int16Array`, `Uint16Array`, `Uint32Array`, and `Float32Array`, respectively.  5125 (UNSIGNED_INT) is only allowed when the accessor contains indices, i.e., the accessor is only referenced by `primitive.indices`.",
-                        "gltf_webgl": "`vertexAttribPointer()` type parameter",
-                        "anyOf": [
-                            {
-                                "enum": [ 5120 ],
-                                "description": "BYTE",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 5121 ],
-                                "description": "UNSIGNED_BYTE",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 5122 ],
-                                "description": "SHORT",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 5123 ],
-                                "description": "UNSIGNED_SHORT",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 5125 ],
-                                "description": "UNSIGNED_INT",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 5126 ],
-                                "description": "FLOAT",
-                                "type": "integer"
-                            },
-                            {
-                                "type": "integer"
-                            }
-                        ]
-                    },
-                    "normalized": {
-                        "type": "boolean",
-                        "description": "Specifies whether integer data values should be normalized.",
-                        "default": false,
-                        "gltf_detailedDescription": "Specifies whether integer data values should be normalized (`true`) to [0, 1] (for unsigned types) or [-1, 1] (for signed types), or converted directly (`false`) when they are accessed. This property is defined only for accessors that contain vertex attributes or animation output data.",
-                        "gltf_webgl": "`vertexAttribPointer()` normalized parameter"
-                    },
-                    "count": {
-                        "type": "integer",
-                        "description": "The number of attributes referenced by this accessor.",
-                        "minimum": 1,
-                        "gltf_detailedDescription": "The number of attributes referenced by this accessor, not to be confused with the number of bytes or number of components."
-                    },
-                    "type": {
-                        "description": "Specifies if the attribute is a scalar, vector, or matrix.",
-                        "anyOf": [
-                            {
-                                "enum": [ "SCALAR" ]
-                            },
-                            {
-                                "enum": [ "VEC2" ]
-                            },
-                            {
-                                "enum": [ "VEC3" ]
-                            },
-                            {
-                                "enum": [ "VEC4" ]
-                            },
-                            {
-                                "enum": [ "MAT2" ]
-                            },
-                            {
-                                "enum": [ "MAT3" ]
-                            },
-                            {
-                                "enum": [ "MAT4" ]
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    "max": {
-                        "type": "array",
-                        "description": "Maximum value of each component in this attribute.",
-                        "items": {
-                            "type": "number"
-                        },
-                        "minItems": 1,
-                        "maxItems": 16,
-                        "gltf_detailedDescription": "Maximum value of each component in this attribute.  Array elements must be treated as having the same data type as accessor's `componentType`. Both min and max arrays have the same length.  The length is determined by the value of the type property; it can be 1, 2, 3, 4, 9, or 16.\n\n`normalized` property has no effect on array values: they always correspond to the actual values stored in the buffer. When accessor is sparse, this property must contain max values of accessor data with sparse substitution applied."
-                    },
-                    "min": {
-                        "type": "array",
-                        "description": "Minimum value of each component in this attribute.",
-                        "items": {
-                            "type": "number"
-                        },
-                        "minItems": 1,
-                        "maxItems": 16,
-                        "gltf_detailedDescription": "Minimum value of each component in this attribute.  Array elements must be treated as having the same data type as accessor's `componentType`. Both min and max arrays have the same length.  The length is determined by the value of the type property; it can be 1, 2, 3, 4, 9, or 16.\n\n`normalized` property has no effect on array values: they always correspond to the actual values stored in the buffer. When accessor is sparse, this property must contain min values of accessor data with sparse substitution applied."
-                    },
-                    "sparse": {
-                        "allOf": [ { "$ref": "accessor.sparse.schema.json" } ],
-                        "description": "Sparse storage of attributes that deviate from their initialization value."
-                    },
-                    "name": { },
-                    "extensions": { },
-                    "extras": { }
-                },
-                "dependencies": {
-                    "byteOffset": [ "bufferView" ]
-                },
-                "required": [ "componentType", "count", "type" ]
-
-             */
-
-
             /// <summary>
-            /// TODO: 説明
-            /// バッファービューのインデックス
-            /// 未定義の場合は、スパース オブジェクトでインデックスと値のバッファ ビューを探します。
+            /// bufferViewのインデックス
+            /// <br/>定義されていない場合、アクセサはゼロで初期化されなければなりません。
+            /// <br/>sparse プロパティや拡張機能によって、ゼロを実際の値で上書きすることができます。
             /// </summary>
             public int? bufferView { get; set; } = null;
 
             /// <summary>
-            /// TODO: 説明
+            /// バイトオフセット
+            /// <br/>bufferView の開始点からの相対的なオフセットをバイト単位で指定します。
+            /// <br/>これは、コンポーネントデータタイプのサイズの倍数でなければなりません。
             /// </summary>
+            /// <remarks>
+            /// 依存関係: bufferView
+            /// <br/>既定値 = 0
+            /// <br/>最小 = 0
+            /// <br/>WebGLの場合: vertexAttribPointer() のオフセットパラメータ
+            /// </remarks>
             public int? byteOffset { get; set; } = null;
 
             /// <summary>
-            /// TODO: 説明
+            /// コンポーネントのデータタイプ
             /// </summary>
-            public string type { get; set; } = null;
+            public enum ComponentType : int
+            {
+                BYTE = 5120,
+
+                UNSIGNED_BYTE = 5121,
+
+                SHORT =  5122,
+
+                UNSIGNED_SHORT = 5123,
+
+                UNSIGNED_INT = 5125,
+
+                FLOAT = 5126
+            }
 
             /// <summary>
-            /// TODO: 説明
+            /// コンポーネントのデータタイプ
+            /// <br/>属性内のコンポーネントのデータタイプです。
+            /// <br/>すべての有効な値は WebGL enum に対応しています。
+            /// <br/>対応する型付き配列は、
+            /// それぞれ Int8Array, Uint8Array, Int16Array, Uint16Array, Uint32Array および Float32Array です。
+            /// <br/>5125 (UNSIGNED_INT) は、アクセサがインデックスを含む場合、つまり、
+            /// アクセサが primitive.indices によってのみ参照される場合にのみ許可されます。
             /// </summary>
-            public int? componentType { get; set; } = null;
+            /// <remarks>
+            /// 必須項目
+            /// <br/>WebGLの場合: vertexAttribPointer() タイプのパラメータ
+            /// </remarks>
+            public ComponentType? componentType { get; set; } = null;
 
             /// <summary>
-            /// TODO: 説明
+            /// 正規化
+            /// <br/>整数データの値をアクセスする際に、[0, 1](符号なしタイプの場合)
+            /// または[-1, 1](符号ありタイプの場合)に正規化する(true)か、
+            /// 直接変換する(false)かを指定します。
+            /// <br/>このプロパティは、頂点属性やアニメーションの出力データを含むアクセサにのみ定義されています。
             /// </summary>
+            /// <remarks>
+            /// WebGLの場合: vertexAttribPointer() 正規化パラメータ
+            /// </remarks>
+            public bool? normalized { get; set; } = null;
+
+            /// <summary>
+            /// 属性の数
+            /// <br/>このアクセサが参照する属性の数。
+            /// <br/>バイト数やコンポーネント数とは異なります。
+            /// </summary>
+            /// <remarks>
+            /// 必須項目
+            /// </remarks>
             public int? count { get; set; } = null;
 
             /// <summary>
-            /// TODO: 説明
+            /// 属性のタイプ
             /// </summary>
-            public double?[] max { get; set; } = null;
+            public enum AttributeType : int
+            {
+                SCALAR,
+
+                VEC2,
+
+                VEC3,
+
+                VEC4,
+
+                MAT2,
+                
+                MAT3,
+                
+                MAT4,
+                
+                @string
+            }
 
             /// <summary>
-            /// TODO: 説明
+            /// 属性のタイプ
+            /// <br/>属性がスカラー、ベクトル、マトリックスのいずれであるかを指定します。
             /// </summary>
-            public double?[] min { get; set; } = null;
+            /// <remarks>
+            /// 必須項目
+            /// </remarks>
+            public AttributeType? type { get; set; } = null;
 
             /// <summary>
-            /// TODO: 説明
+            /// 各コンポーネントの最大値リスト
+            /// <br/>リストの要素は、アクセサの componentType と同じデータ型として扱われなければなりません。
+            /// <br/>min と max のリストはどちらも同じ長さです。
+            /// <br/>この長さは type プロパティの値によって決定され、1、2、3、4、9、16 のいずれかになります。
+            /// <br/>アクセサがスパースな場合、このプロパティには、スパース置換が適用された
+            /// アクセサデータの最大値が格納されていなければなりません。
             /// </summary>
-            public bool? normalized { get; set; } = null;
+            /// <remarks>
+            /// 指定する場合、リストの要素は 1 から 16 個の範囲で定義します。
+            /// </remarks>
+            public List<double> max { get; set; } = null;
+
+            /// <summary>
+            /// 各コンポーネントの最小値リスト
+            /// <br/>リストの要素は、アクセサの componentType と同じデータ型として扱われなければなりません。
+            /// <br/>min と max の配列はどちらも同じ長さです。
+            /// <br/>この長さは type プロパティの値によって決定され、1、2、3、4、9、16 のいずれかになります。
+            /// <br/>アクセサがスパースな場合、このプロパティには、スパース置換が適用された
+            /// アクセサデータの最小値が含まれていなければなりません。
+            /// </summary>
+            /// <remarks>
+            /// 指定する場合、リストの要素は 1 から 16 個の範囲で定義します。
+            /// </remarks>
+            public List<double> min { get; set; } = null;
+
+            /// <summary>
+            /// スパース
+            /// <br/>初期化値から逸脱した属性をスパースに保存します。
+            /// </summary>
+            public Sparse? sparse { get; set; } = null;
 
 #pragma warning restore IDE1006 // 命名スタイル
         }

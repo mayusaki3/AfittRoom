@@ -3,7 +3,7 @@
     public partial class AvatarTF
     {
         /// <summary>
-        /// アトリビュート
+        /// 属性
         /// </summary>
         public class Attributes
         {

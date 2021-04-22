@@ -187,7 +187,7 @@
     <value>Other</value>
   </data>
   <data name="@Other_desc" xml:space="preserve">
-    <value>The URL link to the license document must be included.</value>
+    <value>Please refer to the URL link to check the license document.</value>
   </data>
   <data name="@Redistribution_Prohibited" xml:space="preserve">
     <value>Redistribution Prohibited</value>

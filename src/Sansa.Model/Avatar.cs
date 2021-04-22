@@ -33,15 +33,7 @@ namespace Sansa.Model
                 Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
             }
 
-            JsonSerializerOptions opt = new()
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            };
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableInt());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableDouble());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowedUserName>());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowOrDisallow>());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.LicenseName>());
+            SetJsonSerializerOptions(out JsonSerializerOptions opt);
 
             avatarTF.schema = JsonSerializer.Deserialize<AvatarTF.Schema>(js, opt);
 
@@ -78,15 +70,8 @@ namespace Sansa.Model
             // GLBチャンク0作成
             GLB_Chunk chunk0 = new();
             chunk0.ChunkType = GLB_Chunk.ChankType.JSON;
-            JsonSerializerOptions opt = new()
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-            };
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableInt());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableDouble());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowedUserName>());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowOrDisallow>());
-            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.LicenseName>());
+
+            SetJsonSerializerOptions(out JsonSerializerOptions opt);
 
             string js = JsonSerializer.Serialize(avatarTF.schema, opt);
             byte[] jsbytes = System.Text.Encoding.UTF8.GetBytes(js);
@@ -102,6 +87,29 @@ namespace Sansa.Model
             sw.WriteLine(js.Replace(",", ",\r\n"));
             Logging.Write("出力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
 
+        }
+
+        #endregion
+
+        #region アバターセーブ (Save)
+
+        /// <summary>
+        /// GLBチャンクリストにアバターをセーブする。
+        /// </summary>
+        /// <param name="ChunkList"></param>
+        private void SetJsonSerializerOptions(out JsonSerializerOptions option)
+        {
+            option = new()
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            };
+            option.Converters.Add(new AvatarTF.JsonConverterForNullableInt());
+            option.Converters.Add(new AvatarTF.JsonConverterForNullableDouble());
+            option.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowedUserName>());
+            option.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowOrDisallow>());
+            option.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.LicenseName>());
+            option.Converters.Add(new AvatarTF.JsonConverterForNullableEnumValue<AvatarTF.Accessor.ComponentType>());
+            option.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Accessor.AttributeType>());
         }
 
         #endregion

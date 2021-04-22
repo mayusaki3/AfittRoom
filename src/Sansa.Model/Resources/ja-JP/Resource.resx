@@ -187,7 +187,7 @@
     <value>その他</value>
   </data>
   <data name="@Other_desc" xml:space="preserve">
-    <value>ライセンス文書へのURLリンクの記載が必要です。</value>
+    <value>URLリンクを参照してライセンス文書を確認してください。</value>
   </data>
   <data name="@Redistribution_Prohibited" xml:space="preserve">
     <value>再配布の禁止</value>
