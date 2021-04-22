@@ -8,28 +8,25 @@ namespace Sansa.Model
     public partial class AvatarTF
     {
         /// <summary>
-        /// TODO: 説明
+        /// JSONシリアル化のためのNull許容型float用カスタムコンバーター
         /// </summary>
+        /// <remarks>
+        /// 本来はfloat型です。
+        /// <br/>シリアライズ時に有効桁が１桁欠落するためdouble型で処理しています。
+        /// </remarks>
         public class JsonConverterForNullableDouble : JsonConverter<double?>
         {
-            /// <summary>
-            /// TODO: 説明
-            /// </summary>
-            /// <param name="reader"></param>
-            /// <param name="typeToConvert"></param>
-            /// <param name="options"></param>
-            /// <returns></returns>
             public override double? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                return reader.GetString() == "" ? null : reader.GetSingle();
+                double? rt = null;
+                try
+                {
+                    rt = reader.GetDouble();
+                }
+                catch { }
+                return rt;
             }
 
-            /// <summary>
-            /// TODO: 説明
-            /// </summary>
-            /// <param name="writer"></param>
-            /// <param name="value"></param>
-            /// <param name="options"></param>
             public override void Write(Utf8JsonWriter writer, double? value, JsonSerializerOptions options)
             {
                 if (value.HasValue)

@@ -6,7 +6,7 @@
         /// VRM拡張
         /// TODO: 説明
         /// </summary>
-        public class Materialproperty
+        public class MaterialProperty
         {
 #pragma warning disable IDE1006 // 命名スタイル
 

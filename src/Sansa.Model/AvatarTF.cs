@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using System.Text.Json;
 
 namespace Sansa.Model
@@ -23,6 +25,25 @@ namespace Sansa.Model
 
         #endregion
 
+        #region
+
+        /// <summary>
+        /// TODO: チェッカーどうする？
+        /// 必須項目チェック
+        /// </summary>
+        public EnumAttribute GetEnumAttr<T>(T? value) where T : struct, Enum
+        {
+            EnumAttribute rt = new();
+            FieldInfo fld = typeof(T).GetField(Enum.GetName(typeof(T), value));
+            EnumAttribute ea = (EnumAttribute)fld.GetCustomAttribute(typeof(EnumAttribute));
+            rt.display = Core.MakeMessage(ea.display);
+            rt.description = Core.MakeMessage(ea.description);
+            return rt;
+        }
+
+        #endregion
+
+
         #endregion
 
         #region
@@ -33,7 +54,7 @@ namespace Sansa.Model
         /// <summary>
         /// TODO: 説明
         /// </summary>
-        public RootObject rootobject { get; set; }
+        public Schema schema { get; set; }
 
 #pragma warning restore IDE1006 // 命名スタイル
 

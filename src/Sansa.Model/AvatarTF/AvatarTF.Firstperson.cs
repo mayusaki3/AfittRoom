@@ -5,7 +5,7 @@
         /// <summary>
         /// VRM拡張：一人称設定
         /// </summary>
-        public class Firstperson
+        public class FirstPerson
         {
 #pragma warning disable IDE1006 // 命名スタイル
 

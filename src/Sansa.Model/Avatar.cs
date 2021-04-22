@@ -33,9 +33,33 @@ namespace Sansa.Model
                 Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
             }
 
-            AvaterTF.rootobject = JsonSerializer.Deserialize<AvatarTF.RootObject>(js);
+            JsonSerializerOptions opt = new()
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            };
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableInt());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableDouble());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowedUserName>());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowOrDisallow>());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.LicenseName>());
 
+            avatarTF.schema = JsonSerializer.Deserialize<AvatarTF.Schema>(js, opt);
 
+            Logging.Write("***VRM情報***");
+            Logging.Write("[title]: " + avatarTF.schema.extensions.VRM.meta.title);
+            Logging.Write("[author]: " + avatarTF.schema.extensions.VRM.meta.author);
+
+            AvatarTF.EnumAttribute ea = avatarTF.GetEnumAttr<AvatarTF.Meta.AllowedUserName>(avatarTF.schema.extensions.VRM.meta.allowedUserName);
+            Logging.Write("[allowedUserName]: " + ea.display + "  // " + ea.description);
+
+            ea = avatarTF.GetEnumAttr<AvatarTF.Meta.AllowOrDisallow>(avatarTF.schema.extensions.VRM.meta.violentUssageName);
+            Logging.Write("[violentUssageName]: " + ea.display);
+
+            ea = avatarTF.GetEnumAttr<AvatarTF.Meta.AllowOrDisallow>(avatarTF.schema.extensions.VRM.meta.sexualUssageName);
+            Logging.Write("[sexualUssageName]: " + ea.display);
+
+            ea = avatarTF.GetEnumAttr<AvatarTF.Meta.LicenseName>(avatarTF.schema.extensions.VRM.meta.licenseName);
+            Logging.Write("[licenseName]: " + ea.display + "  // " + ea.description);
 
         }
 
@@ -60,8 +84,11 @@ namespace Sansa.Model
             };
             opt.Converters.Add(new AvatarTF.JsonConverterForNullableInt());
             opt.Converters.Add(new AvatarTF.JsonConverterForNullableDouble());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowedUserName>());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.AllowOrDisallow>());
+            opt.Converters.Add(new AvatarTF.JsonConverterForNullableEnum<AvatarTF.Meta.LicenseName>());
 
-            string js = JsonSerializer.Serialize(AvaterTF.rootobject, opt);
+            string js = JsonSerializer.Serialize(avatarTF.schema, opt);
             byte[] jsbytes = System.Text.Encoding.UTF8.GetBytes(js);
             chunk0.ChunkLength = (uint)(jsbytes.Length + jsbytes.Length % 4);
             chunk0.ChunkData = new byte[chunk0.ChunkLength];
@@ -98,7 +125,7 @@ namespace Sansa.Model
 
         #region アバター
 
-        public AvatarTF AvaterTF { get; } = new();
+        public AvatarTF avatarTF { get; } = new();
 
         #endregion
 

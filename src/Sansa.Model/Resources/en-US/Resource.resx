@@ -117,6 +117,84 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="@Allow" xml:space="preserve">
+    <value>Allow</value>
+  </data>
+  <data name="@CC0" xml:space="preserve">
+    <value>Copyright wavier(CC0)</value>
+  </data>
+  <data name="@CC0_desc" xml:space="preserve">
+    <value>https://creativecommons.org/publicdomain/zero/1.0/deed.en</value>
+  </data>
+  <data name="@CC_BY" xml:space="preserve">
+    <value>Creative Commons CC BY License(CC_BY)</value>
+  </data>
+  <data name="@CC_BY_desc" xml:space="preserve">
+    <value>https://creativecommons.org/licenses/by/4.0/deed.en</value>
+  </data>
+  <data name="@CC_BY_NC" xml:space="preserve">
+    <value>Creative Commons CC BY NC License(CC_BY_NC)</value>
+  </data>
+  <data name="@CC_BY_NC_desc" xml:space="preserve">
+    <value>https://creativecommons.org/licenses/by-nc/4.0/deed.en</value>
+  </data>
+  <data name="@CC_BY_NC_ND" xml:space="preserve">
+    <value>Creative Commons CC BY NC ND License(CC_BY_NC_ND)</value>
+  </data>
+  <data name="@CC_BY_NC_ND_desc" xml:space="preserve">
+    <value>https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en</value>
+  </data>
+  <data name="@CC_BY_NC_SA" xml:space="preserve">
+    <value>Creative Commons CC BY NC SA License(CC_BY_NC_SA)</value>
+  </data>
+  <data name="@CC_BY_NC_SA_desc" xml:space="preserve">
+    <value>https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en</value>
+  </data>
+  <data name="@CC_BY_ND" xml:space="preserve">
+    <value>Creative Commons CC BY ND License(CC_BY_ND)</value>
+  </data>
+  <data name="@CC_BY_ND_desc" xml:space="preserve">
+    <value>https://creativecommons.org/licenses/by-nd/4.0/deed.en</value>
+  </data>
+  <data name="@CC_BY_SA" xml:space="preserve">
+    <value>Creative Commons CC BY SA License(CC_BY_SA)</value>
+  </data>
+  <data name="@CC_BY_SA_desc" xml:space="preserve">
+    <value>https://creativecommons.org/licenses/by-sa/4.0/deed.en</value>
+  </data>
+  <data name="@Disallow" xml:space="preserve">
+    <value>Disallow</value>
+  </data>
+  <data name="@Everyone" xml:space="preserve">
+    <value>Available to all</value>
+  </data>
+  <data name="@Everyone_desc" xml:space="preserve">
+    <value>Anyone can operate it.</value>
+  </data>
+  <data name="@ExplicitlyLicensedPerson" xml:space="preserve">
+    <value>Available to authorized personnel only</value>
+  </data>
+  <data name="@ExplicitlyLicensedPerson_desc" xml:space="preserve">
+    <value>Only those who are explicitly authorized are allowed to operate it.</value>
+  </data>
+  <data name="@OnlyAuthor" xml:space="preserve">
+    <value>Available to avatar authors only</value>
+  </data>
+  <data name="@OnlyAuthor_desc" xml:space="preserve">
+    <value>Only the avatar author is allowed to manipulate the avatar.</value>
+  </data>
+  <data name="@Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="@Other_desc" xml:space="preserve">
+    <value>The URL link to the license document must be included.</value>
+  </data>
+  <data name="@Redistribution_Prohibited" xml:space="preserve">
+    <value>Redistribution Prohibited</value>
+  </data>
+  <data name="@Redistribution_Prohibited_desc" xml:space="preserve">
+    <value>It may not be redistributed.</value>
+  </data>
   <data name="SMBE0001" xml:space="preserve">
     <value>The magic of the GLB header is not glTF.</value>
   </data>

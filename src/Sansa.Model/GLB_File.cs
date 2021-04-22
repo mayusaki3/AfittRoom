@@ -20,6 +20,7 @@ namespace Sansa.Model
         /// <param name="path">GLBファイルパス</param>
         public void Load(string path)
         {
+            if (path.Length < 1) return;
             Logging.Write(Core.MakeMessage(Messages.SMBI0001, new string[] { Path.GetFullPath(path) }));
 
             // 読み込み
@@ -74,6 +75,7 @@ namespace Sansa.Model
         /// <param name="path">GLBファイルパス</param>
         public void Save(string path)
         {
+            if (path.Length < 1) return;
             Logging.Write(Core.MakeMessage(Messages.SMBI0003, new string[] { Path.GetFullPath(path) }));
 
             // ヘッダ全バイト長再計算

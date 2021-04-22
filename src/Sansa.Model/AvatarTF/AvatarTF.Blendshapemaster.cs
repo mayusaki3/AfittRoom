@@ -6,7 +6,7 @@
         /// VRM拡張
         /// TODO: 説明
         /// </summary>
-        public class Blendshapemaster
+        public class BlendShapeMaster
         {
 #pragma warning disable IDE1006 // 命名スタイル
 
