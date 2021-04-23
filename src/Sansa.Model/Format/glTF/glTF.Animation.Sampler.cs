@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         public partial class Animation
         {
@@ -16,8 +16,6 @@ namespace Sansa.Model.Format
             /// </remarks>
             public partial class Sampler
             {
-#pragma warning disable IDE1006 // 命名スタイル
-
                 /// <summary>
                 /// 入力
                 /// <br/>キーフレームの入力値を含むアクセサのインデックスです。
@@ -91,8 +89,6 @@ namespace Sansa.Model.Format
                 /// アプリケーション固有のデータ
                 /// </summary>
                 public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
             }
         }
     }

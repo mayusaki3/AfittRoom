@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         public partial class Camera
         {
@@ -15,8 +15,6 @@ namespace Sansa.Model.Format
             /// </remarks>
             public partial class Perspective
             {
-#pragma warning disable IDE1006 // 命名スタイル
-
                 /// <summary>
                 /// 視野のアスペクト比
                 /// <br/>浮動小数点で指定します。
@@ -71,8 +69,6 @@ namespace Sansa.Model.Format
                 /// アプリケーション固有のデータ
                 /// </summary>
                 public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
             }
         }
     }

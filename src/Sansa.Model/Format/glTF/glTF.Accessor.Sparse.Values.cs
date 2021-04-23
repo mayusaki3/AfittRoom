@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         public partial class Accessor
         {
@@ -18,8 +18,6 @@ namespace Sansa.Model.Format
                 /// </remarks>
                 public class Values
                 {
-#pragma warning disable IDE1006 // 命名スタイル
-
                     /// <summary>
                     /// bufferViewのインデックス
                     /// <br/>スパースな値を持つ bufferView のインデックスです。
@@ -50,8 +48,6 @@ namespace Sansa.Model.Format
                     /// アプリケーション固有のデータ
                     /// </summary>
                     public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
                 }
             }
         }

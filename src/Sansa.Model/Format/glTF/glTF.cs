@@ -9,10 +9,8 @@ namespace Sansa.Model.Format
     /// <remarks>
     /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/glTF.schema.json
     /// </remarks>
-    public partial class GLTF
+    public partial class glTF
     {
-#pragma warning disable IDE1006 // 命名スタイル
-
         /// <summary>
         /// 使用しているエクステンション
         /// <br/>このアセットのどこかで使用されているglTFエクステンションの名前リストです。
@@ -173,7 +171,5 @@ namespace Sansa.Model.Format
         /// アプリケーション固有のデータ
         /// </summary>
         public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         /// <summary>
         /// アクセサ
@@ -16,8 +16,6 @@ namespace Sansa.Model.Format
         /// </remarks>
         public partial class Accessor
         {
-#pragma warning disable IDE1006 // 命名スタイル
-
             /// <summary>
             /// bufferViewのインデックス
             /// <br/>定義されていない場合、アクセサはゼロで初期化されなければなりません。
@@ -171,8 +169,6 @@ namespace Sansa.Model.Format
             /// アプリケーション固有のデータ
             /// </summary>
             public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

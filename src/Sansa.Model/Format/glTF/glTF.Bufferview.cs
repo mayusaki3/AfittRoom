@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         /// <summary>
         /// バッファビュー
@@ -13,8 +13,6 @@ namespace Sansa.Model.Format
         /// </remarks>
         public class Bufferview
         {
-#pragma warning disable IDE1006 // 命名スタイル
-
             /// <summary>
             /// バッファのインデックス
             /// </summary>
@@ -91,8 +89,6 @@ namespace Sansa.Model.Format
             /// アプリケーション固有のデータ
             /// </summary>
             public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

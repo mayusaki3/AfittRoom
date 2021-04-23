@@ -1,6 +1,6 @@
 ﻿namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         /// <summary>
         /// バッファ
@@ -11,8 +11,6 @@
         /// </remarks>
         public class Buffer
         {
-#pragma warning disable IDE1006 // 命名スタイル
-
             /// <summary>
             /// バッファのURI
             /// <br/>相対パスは、.gltfファイルからの相対パスです。
@@ -29,8 +27,6 @@
             /// <br/>最小 = 1
             /// </remarks>
             public int? byteLength { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

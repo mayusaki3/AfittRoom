@@ -1,6 +1,6 @@
 ﻿namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         /// <summary>
         /// エクステンション

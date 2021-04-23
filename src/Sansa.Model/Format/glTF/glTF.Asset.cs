@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         /// <summary>
         /// アセット
@@ -13,8 +13,6 @@ namespace Sansa.Model.Format
         /// </remarks>
         public class Asset
         {
-#pragma warning disable IDE1006 // 命名スタイル
-
             /// <summary>
             /// コンテンツ作成者のクレジットを表示するのに適した著作権メッセージ
             /// </summary>
@@ -52,8 +50,6 @@ namespace Sansa.Model.Format
             /// アプリケーション固有のデータ
             /// </summary>
             public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

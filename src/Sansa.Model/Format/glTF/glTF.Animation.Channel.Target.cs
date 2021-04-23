@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         public partial class Animation
         {
@@ -17,8 +17,6 @@ namespace Sansa.Model.Format
                 /// </remarks>
                 public class Target
                 {
-#pragma warning disable IDE1006 // 命名スタイル
-
                     /// <summary>
                     /// ノード
                     /// <br/>対象となるノードのインデックスです。
@@ -62,8 +60,6 @@ namespace Sansa.Model.Format
                     /// アプリケーション固有のデータ
                     /// </summary>
                     public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
                 }
             }
         }

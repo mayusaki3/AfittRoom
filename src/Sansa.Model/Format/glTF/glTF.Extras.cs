@@ -1,6 +1,6 @@
 ﻿namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         /// <summary>
         /// アプリケーション固有のデータ
@@ -17,15 +17,11 @@
         /// </remarks>
         public class Extras
         {
-#pragma warning disable IDE1006 // 命名スタイル
-
             /// <summary>
             /// ターゲットの名前
             /// <br/>
             /// </summary>
             public string[] targetNames { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Sansa.Model.Format
 {
-    public partial class GLTF
+    public partial class glTF
     {
         /// <summary>
         /// カメラ
@@ -14,13 +14,11 @@ namespace Sansa.Model.Format
         /// </remarks>
         public partial class Camera
         {
-#pragma warning disable IDE1006 // 命名スタイル
-
             /// <summary>
             /// 正射投影マトリクスを作成するためのプロパティを持つ正射投影カメラ
             /// </summary>
             /// <remarks>
-            /// 必須項目ではない
+            /// type = orthographic の場合は必須項目
             /// </remarks>
             public OrthoGraphic orthographic { get; set; } = null;
 
@@ -28,7 +26,7 @@ namespace Sansa.Model.Format
             /// 透視投影マトリクスを作成するためのプロパティを持つ透視投影カメラ
             /// </summary>
             /// <remarks>
-            /// 必須項目ではない
+            /// type = perspective の場合は必須項目
             /// </remarks>
             public Perspective perspective { get; set; } = null;
 
@@ -66,8 +64,6 @@ namespace Sansa.Model.Format
             /// アプリケーション固有のデータ
             /// </summary>
             public Extras extras { get; set; } = null;
-
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }
