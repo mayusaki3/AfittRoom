@@ -102,7 +102,7 @@ namespace Sansa.Model.Format
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
         public List<Material> materials { get; set; } = null;
-
+/*
         /// <summary>
         /// メッシュのリスト
         /// <br/>メッシュとは、レンダリングされるプリミティブの集合体です。
@@ -166,7 +166,7 @@ namespace Sansa.Model.Format
         /// エクステンション
         /// </summary>
         public Extensions extensions { get; set; } = null;
-
+*/
         /// <summary>
         /// アプリケーション固有のデータ
         /// </summary>
