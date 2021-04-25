@@ -2,7 +2,7 @@
 {
     public partial class glTF2
     {
-        public partial class Extention
+        public partial class Extension
         {
             /// <summary>
             /// 非発光マテリアル

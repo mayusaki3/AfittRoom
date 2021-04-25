@@ -1,4 +1,4 @@
-﻿using static Sansa.Model.Format.glTF2.Extention;
+﻿using static Sansa.Model.Format.glTF2.Extension;
 
 namespace Sansa.Model.Format
 {

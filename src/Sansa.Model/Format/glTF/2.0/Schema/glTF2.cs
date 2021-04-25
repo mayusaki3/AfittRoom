@@ -22,6 +22,11 @@ namespace Sansa.Model.Format
         public List<string> extensionsUsed { get; set; } = null;
 
         /// <summary>
+        /// エクステンション
+        /// </summary>
+        public Extensions extensions { get; set; } = null;
+
+        /// <summary>
         /// 必須のエクステンション
         /// <br/>このアセットを正しく読み込むために必要なglTFエクステンションの名前リストです。
         /// </summary>
@@ -29,7 +34,7 @@ namespace Sansa.Model.Format
         /// ユニークアイテム
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<string> extensionsRequired { get; set; } = null;
+        //       public List<string> extensionsRequired { get; set; } = null;
 
         /// <summary>
         /// アクセサのリスト
@@ -38,7 +43,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Accessor> accessors { get; set; } = null;
+        //       public List<Accessor> accessors { get; set; } = null;
 
         /// <summary>
         /// アニメーションのリスト
@@ -47,7 +52,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Animation> animations { get; set; } = null;
+        //       public List<Animation> animations { get; set; } = null;
 
         /// <summary>
         /// アセット
@@ -56,7 +61,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// 必須項目
         /// </remarks>
-        public Asset asset { get; set; } = null;
+        //        public Asset asset { get; set; } = null;
 
         /// <summary>
         /// バッファのリスト
@@ -65,7 +70,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Buffer> buffers { get; set; } = null;
+        //        public List<Buffer> buffers { get; set; } = null;
 
         /// <summary>
         /// bufferViewsのリスト
@@ -74,7 +79,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Bufferview> bufferViews { get; set; } = null;
+        //       public List<Bufferview> bufferViews { get; set; } = null;
 
         /// <summary>
         /// カメラのリスト
@@ -83,7 +88,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Camera> cameras { get; set; } = null;
+        //       public List<Camera> cameras { get; set; } = null;
 
         /// <summary>
         /// 画像のリスト
@@ -92,7 +97,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Image> images { get; set; } = null;
+        //       public List<Image> images { get; set; } = null;
 
         /// <summary>
         /// マテリアルのリスト
@@ -101,7 +106,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Material> materials { get; set; } = null;
+        //       public List<Material> materials { get; set; } = null;
 
 
         /// <summary>
@@ -111,67 +116,62 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Mesh> meshes { get; set; } = null;
-        /*
-                              /// <summary>
-                              /// ノードのリスト
-                              /// </summary>
-                              /// <remarks>
-                              /// <br/>指定する場合、最低１つ以上定義します。
-                              /// </remarks>
-                              public List<Node> nodes { get; set; } = null;
-
-                              /// <summary>
-                              /// サンプラーのリスト
-                              /// <br/>サンプラーには、テクスチャのフィルタリングやラッピングモードのプロパティが含まれています。
-                              /// </summary>
-                              /// <remarks>
-                              /// <br/>指定する場合、最低１つ以上定義します。
-                              /// </remarks>
-                              public List<Sampler> samplers { get; set; } = null;
-
-                              /// <summary>
-                              /// デフォルトシーンのインデックス
-                              /// </summary>
-                              /// <remarks>
-                              /// 依存関係: scenes
-                              /// </remarks>
-                              public int? scene { get; set; } = null;
-
-                              /// <summary>
-                              /// シーンのリスト
-                              /// </summary>
-                              /// <remarks>
-                              /// <br/>指定する場合、最低１つ以上定義します。
-                              /// </remarks>
-                              public List<Scene> scenes { get; set; } = null;
-
-                              /// <summary>
-                              /// スキンのリスト
-                              /// <br/>スキンはジョイントとマトリクスで定義されます。
-                              /// </summary>
-                              /// <remarks>
-                              /// <br/>指定する場合、最低１つ以上定義します。
-                              /// </remarks>
-                              public List<Skin> skins { get; set; } = null;
-
-                              /// <summary>
-                              /// テクスチャーのリスト
-                              /// </summary>
-                              /// <remarks>
-                              /// <br/>指定する場合、最低１つ以上定義します。
-                              /// </remarks>
-                              public List<Texture> textures { get; set; } = null;
-                */
+        //        public List<Mesh> meshes { get; set; } = null;
 
         /// <summary>
-        /// エクステンション
+        /// ノードのリスト
         /// </summary>
-        public Extensions extensions { get; set; } = null;
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        //        public List<Node> nodes { get; set; } = null;
+
+        /// <summary>
+        /// サンプラーのリスト
+        /// <br/>サンプラーには、テクスチャのフィルタリングやラッピングモードのプロパティが含まれています。
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        //        public List<Sampler> samplers { get; set; } = null;
+
+        /// <summary>
+        /// デフォルトシーンのインデックス
+        /// </summary>
+        /// <remarks>
+        /// 依存関係: scenes
+        /// </remarks>
+        //        public int? scene { get; set; } = null;
+
+        /// <summary>
+        /// シーンのリスト
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        //        public List<Scene> scenes { get; set; } = null;
+
+        /// <summary>
+        /// スキンのリスト
+        /// <br/>スキンはジョイントとマトリクスで定義されます。
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        //       public List<Skin> skins { get; set; } = null;
+
+        /// <summary>
+        /// テクスチャーのリスト
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        //       public List<Texture> textures { get; set; } = null;
+
 
         /// <summary>
         /// アプリケーション固有のデータ
         /// </summary>
-        public Extras extras { get; set; } = null;
+        //        public Extras extras { get; set; } = null;
     }
 }

@@ -2,7 +2,7 @@
 {
     public partial class glTF2
     {
-        public partial class Extention
+        public partial class Extension
         {
             /// <summary>
             /// VRM拡張
@@ -37,20 +37,23 @@
                 public Meta meta { get; set; } = null;
 
                 /// <summary>
-                /// TODO: 説明
+                /// ノードへのヒューマノイドボーンの割り当て
                 /// </summary>
                 /// <remarks>
                 /// 必須項目
                 /// </remarks>
-       //         public Humanoid humanoid { get; set; } = null;
+                public Humanoid humanoid { get; set; } = null;
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                public FirstPerson firstPerson { get; set; } = null;
 
                 /*
 
 
                    
-                    "humanoid": {
-                      "$ref": "VRMC_vrm.humanoid.schema.json"
-                    },
+                  
                     "firstPerson": {
                       "title": "FirstPerson",
                       "type": "object",
@@ -71,11 +74,7 @@
                       }
                     }
                   },
-                  "required": [
-                    "specVersion",
-                    "meta",
-                    "humanoid"
-                  ]
+                 
 
 
                  */
@@ -87,10 +86,6 @@
 
 
 
-                /// <summary>
-                /// TODO: 説明
-                /// </summary>
-                //             public FirstPerson firstPerson { get; set; } = null;
 
                 /// <summary>
                 /// TODO: 説明

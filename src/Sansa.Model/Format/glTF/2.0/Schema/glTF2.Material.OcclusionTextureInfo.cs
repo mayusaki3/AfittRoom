@@ -30,7 +30,7 @@ namespace Sansa.Model.Format
                 /// <br/>メッシュにマテリアルを適用するには、対応するテクスチャ座標属性が必要です。
                 /// </summary>
                 /// <remarks>
-                /// <br/>既定値 = 0
+                /// 既定値 = 0
                 /// <br/>最小 = 0
                 /// </remarks>
                 public int? texCoord { get; set; } = null;
