@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Format\VRM\**" />
+    <EmbeddedResource Remove="Format\VRM\**" />
+    <None Remove="Format\VRM\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="AvatarTF\AvaterTF.Accessor.Sparse.cs" />
+    <Compile Remove="AvatarTF\AvaterTF.Schema.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JaffaCore\JaffaCore.csproj" />
   </ItemGroup>
 
