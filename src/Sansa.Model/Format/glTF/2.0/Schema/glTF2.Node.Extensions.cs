@@ -1,21 +1,22 @@
-﻿namespace Sansa.Model
+﻿using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
-    public partial class AvatarTF
+    public partial class glTF2
     {
-        public partial class GLTF
+        public partial class Node
         {
             /// <summary>
-            /// glTFエクステンション
+            /// エクステンション
             /// <br/>拡張機能固有のオブジェクトを持つディクショナリーオブジェクト。
+            /// <br/>ここに対応するエクステンションを定義します。
             /// </summary>
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/extension.schema.json
-            /// <br/>本来は Dictionary&lt;string, object&gt;で定義するべきだが、
-            /// 追加のプロパティは決め打ちで定義している。
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public class Extensions
             {
-              
             }
         }
     }

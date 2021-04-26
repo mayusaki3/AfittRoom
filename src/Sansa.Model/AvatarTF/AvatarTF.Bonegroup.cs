@@ -8,7 +8,6 @@
         /// </summary>
         public class Bonegroup
         {
-#pragma warning disable IDE1006 // 命名スタイル
 
             /// <summary>
             /// TODO: 説明
@@ -18,12 +17,12 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? stiffiness { get; set; } = null;
+            public float? stiffiness { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? gravityPower { get; set; } = null;
+            public float? gravityPower { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -33,17 +32,17 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? dragForce { get; set; } = null;
+            public float? dragForce { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? center { get; set; } = null;
+            public float? center { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? hitRadius { get; set; } = null;
+            public float? hitRadius { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -55,7 +54,6 @@
             /// </summary>
             public int?[] colliderGroups { get; set; } = null;
 
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

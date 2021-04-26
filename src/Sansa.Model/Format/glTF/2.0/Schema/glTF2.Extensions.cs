@@ -1,4 +1,5 @@
-﻿using static Sansa.Model.Format.glTF2.Extention;
+﻿using System.ComponentModel;
+using static Sansa.Model.Format.glTF2.Extension;
 
 namespace Sansa.Model.Format
 {
@@ -12,6 +13,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/extension.schema.json
         /// </remarks>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
         public class Extensions
         {
             /// <summary>

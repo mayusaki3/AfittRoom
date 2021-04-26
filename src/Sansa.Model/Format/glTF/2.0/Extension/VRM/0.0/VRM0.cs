@@ -1,8 +1,11 @@
-﻿namespace Sansa.Model.Format
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
-        public partial class Extention
+        public partial class Extension
         {
             /// <summary>
             /// VRM拡張
@@ -12,6 +15,7 @@
             /// <remarks>
             /// https://github.com/vrm-c/vrm-specification/blob/master/specification/0.0/schema/vrm.schema.json
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public partial class VRM0
             {
                 /// <summary>
@@ -37,75 +41,32 @@
                 public Meta meta { get; set; } = null;
 
                 /// <summary>
-                /// TODO: 説明
+                /// ノードへのヒューマノイドボーンの割り当て
                 /// </summary>
                 /// <remarks>
                 /// 必須項目
                 /// </remarks>
-       //         public Humanoid humanoid { get; set; } = null;
+                public Humanoid humanoid { get; set; } = null;
 
-                /*
-
-
-                   
-                    "humanoid": {
-                      "$ref": "VRMC_vrm.humanoid.schema.json"
-                    },
-                    "firstPerson": {
-                      "title": "FirstPerson",
-                      "type": "object",
-                      "description": "First-person perspective settings",
-                      "$ref": "VRMC_vrm.firstPerson.schema.json"
-                    },
-                    "lookAt": {
-                      "title": "LookAt",
-                      "type": "object",
-                      "description": "Eye gaze control",
-                      "$ref": "VRMC_vrm.lookAt.schema.json"
-                    },
-                    "expressions": {
-                      "type": "array",
-                      "description": "Definitions of expressions",
-                      "items": {
-                        "$ref": "VRMC_vrm.expression.schema.json"
-                      }
-                    }
-                  },
-                  "required": [
-                    "specVersion",
-                    "meta",
-                    "humanoid"
-                  ]
-
-
-                 */
-
-
-
-
-
-
-
+                /// <summary>
+                /// 一人称視点の設定
+                /// </summary>
+                public FirstPerson firstPerson { get; set; } = null;
 
                 /// <summary>
                 /// TODO: 説明
                 /// </summary>
-                //             public FirstPerson firstPerson { get; set; } = null;
+                public BlendShape blendShapeMaster { get; set; } = null;
 
                 /// <summary>
                 /// TODO: 説明
                 /// </summary>
-                //             public BlendShapeMaster blendShapeMaster { get; set; } = null;
+                public SecondaryAnimation secondaryAnimation { get; set; } = null;
 
                 /// <summary>
                 /// TODO: 説明
                 /// </summary>
-                //              public SecondaryAnimation secondaryAnimation { get; set; } = null;
-
-                /// <summary>
-                /// TODO: 説明
-                /// </summary>
-                //              public MaterialProperty[] materialProperties { get; set; } = null;
+                public List<Material> materialProperties { get; set; } = null;
             }
         }
     }

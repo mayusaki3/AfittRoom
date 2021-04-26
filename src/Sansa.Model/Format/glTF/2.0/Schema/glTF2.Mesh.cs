@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -13,6 +14,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/mesh.schema.json
         /// </remarks>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Mesh
         {
             /// <summary>
@@ -23,7 +25,7 @@ namespace Sansa.Model.Format
             /// 必須項目
             /// <br/>最低１つ以上定義します。
             /// </remarks>
-            public Primitive[] primitives { get; set; } = null;
+            public List<Primitive> primitives { get; set; } = null;
 
             /// <summary>
             /// ウェイト
@@ -32,7 +34,7 @@ namespace Sansa.Model.Format
             /// <remarks>
             /// 指定する場合、最低１つ以上定義します。
             /// </remarks>
-            public List<double> weights { get; set; } = null;
+            public List<float> weights { get; set; } = null;
 
             /// <summary>
             /// 名前

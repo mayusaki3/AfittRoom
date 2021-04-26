@@ -1,11 +1,11 @@
 ﻿using Sansa.Model.FormatHelper;
-using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
-        public partial class Extention
+        public partial class Extension
         {
             public partial class VRM0
             {
@@ -15,14 +15,9 @@ namespace Sansa.Model.Format
                 /// <remarks>
                 /// https://github.com/vrm-c/vrm-specification/blob/master/specification/0.0/schema/vrm.meta.schema.json
                 /// </remarks>
+                [TypeConverter(typeof(ExpandableObjectConverter))]
                 public class Meta
                 {
-                    /// <summary>
-                    /// タイトル
-                    /// <br/>このモデルのタイトルです。
-                    /// </summary>
-                    public string title { get; set; } = null;
-
                     /// <summary>
                     /// バージョン
                     /// <br/>このモデルのバージョンです。
@@ -46,6 +41,12 @@ namespace Sansa.Model.Format
                     /// <br/>親作品に相当するものがある場合の参照URLなどを記述します。
                     /// </summary>
                     public string reference { get; set; } = null;
+
+                    /// <summary>
+                    /// タイトル
+                    /// <br/>このモデルのタイトルです。
+                    /// </summary>
+                    public string title { get; set; } = null;
 
                     /// <summary>
                     /// VRMモデルのサムネイル

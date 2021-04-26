@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -13,6 +13,7 @@ namespace Sansa.Model.Format
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/camera.perspective.schema.json
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public partial class Perspective
             {
                 /// <summary>
@@ -24,7 +25,7 @@ namespace Sansa.Model.Format
                 /// <br/>最小 = 0.0
                 /// <br/>最小値を含まない
                 /// </remarks>
-                public double? aspectRatio { get; set; } = null;
+                public float? aspectRatio { get; set; } = null;
 
                 /// <summary>
                 /// ラジアン単位の視野角
@@ -35,7 +36,7 @@ namespace Sansa.Model.Format
                 /// <br/>最小 = 0.0
                 /// <br/>最小値を含まない
                 /// </remarks>
-                public double? yfov { get; set; } = null;
+                public float? yfov { get; set; } = null;
 
                 /// <summary>
                 /// 遠くのクリッピング・プレーンまでの距離
@@ -47,7 +48,7 @@ namespace Sansa.Model.Format
                 /// 最小 = 0.0
                 /// <br/>最小値を含まない
                 /// </remarks>
-                public double? zfar { get; set; } = null;
+                public float? zfar { get; set; } = null;
 
                 /// <summary>
                 /// 近接クリッピング・プレーンまでの距離
@@ -58,7 +59,7 @@ namespace Sansa.Model.Format
                 /// <br/>最小 = 0.0
                 /// <br/>最小値を含まない
                 /// </remarks>
-                public double? znear { get; set; } = null;
+                public float? znear { get; set; } = null;
 
                 /// <summary>
                 /// エクステンション

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -12,6 +12,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/camera.schema.json
         /// </remarks>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Camera
         {
             /// <summary>
@@ -31,18 +32,25 @@ namespace Sansa.Model.Format
             public Perspective perspective { get; set; } = null;
 
             /// <summary>
-            /// カメラが透視投影か正射投影かを指定
+            /// カメラの投影
             /// </summary>
             public enum @Type
             {
+                /// <summary>
+                /// 透視投影タイプ
+                /// </summary>
                 perspective,
 
+                /// <summary>
+                /// 正射投影
+                /// </summary>
                 orthographic
             }
 
             /// <summary>
-            /// カメラが透視投影か正射投影かを指定
-            /// これに基づいて、カメラの perspective または orthographic プロパティが定義されます。
+            /// 透視投影タイプ
+            /// <br/>カメラが透視投影か正射投影かを指定します。
+            /// <br/>これに基づいて、カメラの perspective または orthographic プロパティが定義されます。
             /// </summary>
             /// <remarks>
             /// 必須項目

@@ -102,14 +102,5 @@ namespace VRoomWin
         readonly GLB_File glb = new();
         readonly Avatar ava = new();
 
-        private void BtnglTF_Click(object sender, EventArgs e)
-        {
-            propertyGrid1.SelectedObject = ava.avatarTF.schema;
-        }
-
-        private void BtnExtensions_Click(object sender, EventArgs e)
-        {
-            propertyGrid1.SelectedObject = ava.avatarTF.schema.extensions.VRM.meta;
-        }
     }
 }

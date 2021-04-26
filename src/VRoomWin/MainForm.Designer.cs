@@ -1,5 +1,4 @@
-﻿
-namespace VRoomWin
+﻿namespace VRoomWin
 {
     partial class MainForm
     {
@@ -70,10 +69,7 @@ namespace VRoomWin
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label4 = new System.Windows.Forms.Label();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.btnglTF = new System.Windows.Forms.Button();
-            this.btnExtensions = new System.Windows.Forms.Button();
             this.MenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,13 +88,13 @@ namespace VRoomWin
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInVrm.Location = new System.Drawing.Point(86, 37);
             this.txtInVrm.Name = "txtInVrm";
-            this.txtInVrm.Size = new System.Drawing.Size(687, 23);
+            this.txtInVrm.Size = new System.Drawing.Size(661, 23);
             this.txtInVrm.TabIndex = 1;
             // 
             // btnInOpn
             // 
             this.btnInOpn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInOpn.Location = new System.Drawing.Point(779, 37);
+            this.btnInOpn.Location = new System.Drawing.Point(753, 37);
             this.btnInOpn.Name = "btnInOpn";
             this.btnInOpn.Size = new System.Drawing.Size(29, 23);
             this.btnInOpn.TabIndex = 2;
@@ -109,7 +105,7 @@ namespace VRoomWin
             // btnLoad
             // 
             this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoad.Location = new System.Drawing.Point(834, 36);
+            this.btnLoad.Location = new System.Drawing.Point(808, 36);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(107, 23);
             this.btnLoad.TabIndex = 3;
@@ -119,14 +115,13 @@ namespace VRoomWin
             // 
             // txtLog
             // 
-            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLog.Location = new System.Drawing.Point(301, 124);
+            this.txtLog.Location = new System.Drawing.Point(12, 344);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLog.Size = new System.Drawing.Size(640, 314);
+            this.txtLog.Size = new System.Drawing.Size(903, 135);
             this.txtLog.TabIndex = 4;
             this.txtLog.WordWrap = false;
             // 
@@ -145,7 +140,7 @@ namespace VRoomWin
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOutVrm.Location = new System.Drawing.Point(86, 68);
             this.txtOutVrm.Name = "txtOutVrm";
-            this.txtOutVrm.Size = new System.Drawing.Size(687, 23);
+            this.txtOutVrm.Size = new System.Drawing.Size(661, 23);
             this.txtOutVrm.TabIndex = 6;
             // 
             // label3
@@ -160,7 +155,7 @@ namespace VRoomWin
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(834, 67);
+            this.btnSave.Location = new System.Drawing.Point(808, 67);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(107, 23);
             this.btnSave.TabIndex = 8;
@@ -171,7 +166,7 @@ namespace VRoomWin
             // btnOutOpn
             // 
             this.btnOutOpn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOutOpn.Location = new System.Drawing.Point(779, 66);
+            this.btnOutOpn.Location = new System.Drawing.Point(753, 66);
             this.btnOutOpn.Name = "btnOutOpn";
             this.btnOutOpn.Size = new System.Drawing.Size(29, 23);
             this.btnOutOpn.TabIndex = 9;
@@ -188,7 +183,7 @@ namespace VRoomWin
             this.helpToolStripMenuItem});
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
-            this.MenuBar.Size = new System.Drawing.Size(953, 24);
+            this.MenuBar.Size = new System.Drawing.Size(927, 24);
             this.MenuBar.TabIndex = 10;
             this.MenuBar.Text = "menuStrip1";
             // 
@@ -414,57 +409,25 @@ namespace VRoomWin
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(301, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 15);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "実行ログ：";
-            // 
             // propertyGrid1
             // 
-            this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.propertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propertyGrid1.HelpVisible = false;
             this.propertyGrid1.Location = new System.Drawing.Point(12, 124);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(283, 314);
+            this.propertyGrid1.Size = new System.Drawing.Size(903, 214);
             this.propertyGrid1.TabIndex = 12;
             this.propertyGrid1.ToolbarVisible = false;
-            // 
-            // btnglTF
-            // 
-            this.btnglTF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnglTF.Location = new System.Drawing.Point(86, 98);
-            this.btnglTF.Name = "btnglTF";
-            this.btnglTF.Size = new System.Drawing.Size(82, 23);
-            this.btnglTF.TabIndex = 13;
-            this.btnglTF.Text = "glTF";
-            this.btnglTF.UseVisualStyleBackColor = true;
-            this.btnglTF.Click += new System.EventHandler(this.BtnglTF_Click);
-            // 
-            // btnExtensions
-            // 
-            this.btnExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExtensions.Location = new System.Drawing.Point(174, 98);
-            this.btnExtensions.Name = "btnExtensions";
-            this.btnExtensions.Size = new System.Drawing.Size(82, 23);
-            this.btnExtensions.TabIndex = 14;
-            this.btnExtensions.Text = "VRM";
-            this.btnExtensions.UseVisualStyleBackColor = true;
-            this.btnExtensions.Click += new System.EventHandler(this.BtnExtensions_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 450);
-            this.Controls.Add(this.btnExtensions);
-            this.Controls.Add(this.btnglTF);
+            this.ClientSize = new System.Drawing.Size(927, 491);
             this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.txtLog);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnOutOpn);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label3);
@@ -528,9 +491,6 @@ namespace VRoomWin
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
-        private System.Windows.Forms.Button btnglTF;
-        private System.Windows.Forms.Button btnExtensions;
     }
 }

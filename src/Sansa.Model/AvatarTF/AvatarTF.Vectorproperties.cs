@@ -13,12 +13,12 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double?[] _Color { get; set; } = null;
+            public float?[] _Color { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double?[] _ShadeColor { get; set; } = null;
+            public float?[] _ShadeColor { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -53,7 +53,7 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double?[] _EmissionColor { get; set; } = null;
+            public float?[] _EmissionColor { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -68,7 +68,7 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double?[] _OutlineColor { get; set; } = null;
+            public float?[] _OutlineColor { get; set; } = null;
 
 #pragma warning restore IDE1006 // 命名スタイル
         }

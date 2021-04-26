@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -12,6 +12,7 @@ namespace Sansa.Model.Format
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.occlusionTextureInfo.schema.json
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public partial class OcclusionTextureInfo
             {
                 /// <summary>
@@ -30,7 +31,7 @@ namespace Sansa.Model.Format
                 /// <br/>メッシュにマテリアルを適用するには、対応するテクスチャ座標属性が必要です。
                 /// </summary>
                 /// <remarks>
-                /// <br/>既定値 = 0
+                /// 既定値 = 0
                 /// <br/>最小 = 0
                 /// </remarks>
                 public int? texCoord { get; set; } = null;
@@ -50,7 +51,7 @@ namespace Sansa.Model.Format
                 /// <br/>最小 = 0.0
                 /// <br/>最大 = 1.0
                 /// </remarks>
-                public double? strength { get; set; } = null;
+                public float? strength { get; set; } = null;
 
                 /// <summary>
                 /// エクステンション

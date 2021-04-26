@@ -1,8 +1,10 @@
-﻿namespace Sansa.Model.Format
+﻿using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
-        public partial class Extention
+        public partial class Extension
         {
             /// <summary>
             /// 非発光マテリアル
@@ -12,6 +14,7 @@
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/tree/master/extensions/2.0/Khronos/KHR_materials_unlit
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public class KHR_Materials_Unlit
             {
             }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -13,6 +13,7 @@ namespace Sansa.Model.Format
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/camera.orthographic.schema.json
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public partial class OrthoGraphic
             {
                 /// <summary>
@@ -23,7 +24,7 @@ namespace Sansa.Model.Format
                 /// <remarks>
                 /// 必須項目
                 /// </remarks>
-                public double? xmag { get; set; } = null;
+                public float? xmag { get; set; } = null;
 
                 /// <summary>
                 /// ビューの垂直方向の倍率
@@ -33,7 +34,7 @@ namespace Sansa.Model.Format
                 /// <remarks>
                 /// 必須項目
                 /// </remarks>
-                public double? ymag { get; set; } = null;
+                public float? ymag { get; set; } = null;
 
                 /// <summary>
                 /// 遠くのクリッピング・プレーンまでの距離
@@ -45,7 +46,7 @@ namespace Sansa.Model.Format
                 /// <br/>最小 = 0.0
                 /// <br/>最小値を含まない
                 /// </remarks>
-                public double? zfar { get; set; } = null;
+                public float? zfar { get; set; } = null;
 
                 /// <summary>
                 /// 近接クリッピング・プレーンまでの距離
@@ -55,7 +56,7 @@ namespace Sansa.Model.Format
                 /// 必須項目
                 /// <br/>最小 = 0.0
                 /// </remarks>
-                public double? znear { get; set; } = null;
+                public float? znear { get; set; } = null;
 
                 /// <summary>
                 /// エクステンション

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -14,6 +15,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.schema.json
         /// </remarks>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Accessor
         {
             /// <summary>
@@ -133,7 +135,7 @@ namespace Sansa.Model.Format
             /// <remarks>
             /// 指定する場合、リストの要素は 1 から 16 個の範囲で定義します。
             /// </remarks>
-            public List<double> max { get; set; } = null;
+            public List<float> max { get; set; } = null;
 
             /// <summary>
             /// 各コンポーネントの最小値リスト
@@ -146,7 +148,7 @@ namespace Sansa.Model.Format
             /// <remarks>
             /// 指定する場合、リストの要素は 1 から 16 個の範囲で定義します。
             /// </remarks>
-            public List<double> min { get; set; } = null;
+            public List<float> min { get; set; } = null;
 
             /// <summary>
             /// スパース

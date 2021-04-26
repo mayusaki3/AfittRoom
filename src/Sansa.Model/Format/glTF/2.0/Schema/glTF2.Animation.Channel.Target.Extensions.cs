@@ -1,4 +1,6 @@
-﻿namespace Sansa.Model.Format
+﻿using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
@@ -16,6 +18,7 @@
                     /// <remarks>
                     /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/extension.schema.json
                     /// </remarks>
+                    [TypeConverter(typeof(ExpandableObjectConverter))]
                     public class Extensions
                     {
                     }

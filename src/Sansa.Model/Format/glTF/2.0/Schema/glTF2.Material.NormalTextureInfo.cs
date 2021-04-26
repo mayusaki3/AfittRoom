@@ -1,4 +1,6 @@
-﻿namespace Sansa.Model.Format
+﻿using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
@@ -10,6 +12,7 @@
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.normalTextureInfo.schema.json
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public partial class NormalTextureInfo
             {
                 /// <summary>
@@ -28,7 +31,7 @@
                 /// <br/>メッシュにマテリアルを適用するには、対応するテクスチャ座標属性が必要です。
                 /// </summary>
                 /// <remarks>
-                /// <br/>既定値 = 0
+                /// 既定値 = 0
                 /// <br/>最小 = 0
                 /// </remarks>
                 public int? texCoord { get; set; } = null;
@@ -44,7 +47,7 @@
                 /// <remarks>
                 /// 既定値 = 1.0
                 /// </remarks>
-                public double? scale { get; set; } = null;
+                public float? scale { get; set; } = null;
 
                 /// <summary>
                 /// エクステンション

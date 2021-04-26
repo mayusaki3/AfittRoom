@@ -8,12 +8,11 @@
         /// </summary>
         public class Floatproperties
         {
-#pragma warning disable IDE1006 // 命名スタイル
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? _Cutoff { get; set; } = null;
+            public float? _Cutoff { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -33,12 +32,12 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? _ShadeShift { get; set; } = null;
+            public float? _ShadeShift { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? _ShadeToony { get; set; } = null;
+            public float? _ShadeToony { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -48,22 +47,22 @@
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? _IndirectLightIntensity { get; set; } = null;
+            public float? _IndirectLightIntensity { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? _OutlineWidth { get; set; } = null;
+            public float? _OutlineWidth { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? _OutlineScaledMaxDistance { get; set; } = null;
+            public float? _OutlineScaledMaxDistance { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public double? _OutlineLightingMix { get; set; } = null;
+            public float? _OutlineLightingMix { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
@@ -110,7 +109,6 @@
             /// </summary>
             public int? _ZWrite { get; set; } = null;
 
-#pragma warning restore IDE1006 // 命名スタイル
         }
     }
 }

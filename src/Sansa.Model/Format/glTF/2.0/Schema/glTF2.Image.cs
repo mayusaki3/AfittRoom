@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Sansa.Model.FormatHelper;
+﻿using Sansa.Model.FormatHelper;
+using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -14,6 +14,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/image.schema.json
         /// </remarks>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Image
         {
             /// <summary>

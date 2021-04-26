@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using static Sansa.Model.Format.glTF2.Extention;
+using static Sansa.Model.Format.glTF2.Extension;
 
 namespace Sansa.Model
 {
@@ -127,6 +127,10 @@ namespace Sansa.Model
             option.Converters.Add(new JsonConverterForNullableEnum<glTF2.Accessor.AttributeType>());
             option.Converters.Add(new JsonConverterForNullableEnumValueString<glTF2.Image.MimeType>());
             option.Converters.Add(new JsonConverterForNullableEnum<glTF2.Material.AlphaMode>());
+            option.Converters.Add(new JsonConverterForNullableEnum<VRM0.Humanoid.Bone.BoneName>());
+            option.Converters.Add(new JsonConverterForNullableEnum<VRM0.FirstPerson.LookAtTypeName>());
+            option.Converters.Add(new JsonConverterForNullableEnum<VRM0.FirstPerson.MeshAnnotation.FirstPersonFlag>());
+            option.Converters.Add(new JsonConverterForNullableEnum<VRM0.BlendShape.Group.PresetName>());
         }
 
         #endregion

@@ -1,23 +1,32 @@
-﻿namespace Sansa.Model.Format
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
         public partial class Mesh
         {
-
             /// <summary>
             /// メッシュのプリミティブ
             /// <br/>与えられたマテリアルでレンダリングされるジオメトリです。
             /// </summary>
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/mesh.primitive.schema.json
+            /// <br/>WebGLの場合: drawElements() と drawArrays()
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public partial class Primitive
             {
                 /// <summary>
-                /// TODO: 説明
+                /// 属性のディクショナリーオブジェクト
+                /// <br/>各キーはメッシュ属性のセマンティックに対応し、各値は属性のデータを含むアクセサのインデックスです。
                 /// </summary>
-                public int? attributes { get; set; } = null;
+                /// <remarks>
+                /// 必須項目
+                /// <br/>最低１つ以上定義します。
+                /// </remarks>
+                public Attributes attributes { get; set; } = null;
 
 
                 /*
@@ -98,11 +107,6 @@
             },
             "minItems": 1
         },
-        "extensions": { },
-        "extras": { }
-    },
-    "gltf_webgl": "`drawElements()` and `drawArrays()`",
-    "required": [ "attributes" ]                 
                  
                  */
 

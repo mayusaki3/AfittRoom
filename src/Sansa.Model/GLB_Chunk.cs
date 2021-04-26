@@ -15,8 +15,15 @@ namespace Sansa.Model
         /// </summary>
         public enum ChankType : UInt32
         {
-            JSON = 0x4E4F534A,  // 'JSON' 構造化されたJSONコンテンツ
-            BIN = 0x004E4942    // ' BIN' バイナリバッファ
+            /// <summary>
+            /// 'JSON': 構造化されたJSONコンテンツ
+            /// </summary>
+            JSON = 0x4E4F534A,
+
+            /// <summary>
+            /// ' BIN': バイナリバッファ
+            /// </summary>
+            BIN = 0x004E4942 
         }
 
         #endregion

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -11,6 +11,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/bufferView.schema.json
         /// </remarks>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Bufferview
         {
             /// <summary>
@@ -61,8 +62,14 @@ namespace Sansa.Model.Format
             /// </summary>
              public enum Target : int
             {
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
                 ARRAY_BUFFER = 34962,
 
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
                 ELEMENT_ARRAY_BUFFER = 34963
             }
 

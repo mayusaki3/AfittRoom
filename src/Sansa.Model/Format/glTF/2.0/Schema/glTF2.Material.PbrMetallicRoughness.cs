@@ -1,4 +1,6 @@
-﻿namespace Sansa.Model.Format
+﻿using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
@@ -11,6 +13,7 @@
             /// <remarks>
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.pbrMetallicRoughness.schema.json
             /// </remarks>
+            [TypeConverter(typeof(ExpandableObjectConverter))]
             public class PbrMetallicRoughness
             {
                 /// <summary>
@@ -22,7 +25,7 @@
                 /// <br/>最小 = 0.0
                 /// <br/>最大 = 1.0
                 /// </remarks>
-                public double?[] baseColorFactor { get; set; } = null;
+                public float?[] baseColorFactor { get; set; } = null;
 
                 /// <summary>
                 /// ベースカラーテクスチャ
@@ -63,7 +66,7 @@
                 /// <br/>最小 = 0.0
                 /// <br/>最大 = 1.0,
                 /// </remarks>
-                public double? roughnessFactor { get; set; } = null;
+                public float? roughnessFactor { get; set; } = null;
 
                 /// <summary>
                 /// 金属的な荒々しさのあるテクスチャ

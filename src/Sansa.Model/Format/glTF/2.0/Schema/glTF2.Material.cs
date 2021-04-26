@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -15,6 +11,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.schema.json
         /// </remarks>
+        [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Material
         {
             /// <summary>
@@ -85,7 +82,7 @@ namespace Sansa.Model.Format
             /// <br/>最小 = 0.0
             /// <br/>最大 = 1.0
             /// </remarks>
-            public double?[] emissiveFactor { get; set; } = null;
+            public float?[] emissiveFactor { get; set; } = null;
 
             /// <summary>
             /// マテリアルのアルファレンダリングモード
@@ -134,7 +131,7 @@ namespace Sansa.Model.Format
             /// <br/>既定値 = 0.5
             /// <br/>最小 = 0.0
             /// </remarks>
-            public double? alphaCutoff { get; set; } = null;
+            public float? alphaCutoff { get; set; } = null;
 
             /// <summary>
             /// マテリアルが両面であるかどうかを指定

@@ -1,4 +1,6 @@
-﻿namespace Sansa.Model.Format
+﻿using System.ComponentModel;
+
+namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
@@ -21,6 +23,7 @@
                     /// <br/>ベストプラクティスとしては、移植性を高めるために、
                     /// extras はプリミティブな値ではなく Object であるべきです。
                     /// </remarks>
+                    [TypeConverter(typeof(ExpandableObjectConverter))]
                     public class Extras
                     {
                     }
