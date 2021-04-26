@@ -6,170 +6,133 @@ namespace Sansa.Model.Format
     {
         /// <summary>
         /// TODO: 説明
+        /// Texture sampler properties for filtering and wrapping modes.
         /// </summary>
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/sampler.schema.json
+        /// "gltf_webgl": "`texParameterf()`"
         /// </remarks>
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Sampler
         {
+            /// <summary>
+            /// TODO: 説明
+            /// </summary>
+            public enum MagFilter : int
+            {
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                NEAREST = 9728,
 
-            /*
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                LINEAR = 9729
+            }
 
-               "$schema": "http://json-schema.org/draft-04/schema",
-                "title": "Sampler",
-                "type": "object",
-                "description": "Texture sampler properties for filtering and wrapping modes.",
-                "allOf": [ { "$ref": "glTFChildOfRootProperty.schema.json" } ],
-                "properties": {
-                    "magFilter": {
-                        "description": "Magnification filter.",
-                        "gltf_detailedDescription": "Magnification filter.  Valid values correspond to WebGL enums: `9728` (NEAREST) and `9729` (LINEAR).",
-                        "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_MAG_FILTER",
-                        "anyOf": [
-                            {
-                                "enum": [ 9728 ],
-                                "description": "NEAREST",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 9729 ],
-                                "description": "LINEAR",
-                                "type": "integer"
-                            },
-                            {
-                                "type": "integer"
-                            }
-                        ]
-                    },
-                    "minFilter": {
-                        "description": "Minification filter.",
-                        "gltf_detailedDescription": "Minification filter.  All valid values correspond to WebGL enums.",
-                        "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_MIN_FILTER",
-                        "anyOf": [
-                            {
-                                "enum": [ 9728 ],
-                                "description": "NEAREST",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 9729 ],
-                                "description": "LINEAR",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 9984 ],
-                                "description": "NEAREST_MIPMAP_NEAREST",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 9985 ],
-                                "description": "LINEAR_MIPMAP_NEAREST",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 9986 ],
-                                "description": "NEAREST_MIPMAP_LINEAR",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 9987 ],
-                                "description": "LINEAR_MIPMAP_LINEAR",
-                                "type": "integer"
-                            },
-                            {
-                                "type": "integer"
-                            }
-                        ]
-                    },
-                    "wrapS": {
-                        "description": "s wrapping mode.",
-                        "default": 10497,
-                        "gltf_detailedDescription": "S (U) wrapping mode.  All valid values correspond to WebGL enums.",
-                        "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_WRAP_S",
-                        "anyOf": [
-                            {
-                                "enum": [ 33071 ],
-                                "description": "CLAMP_TO_EDGE",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 33648 ],
-                                "description": "MIRRORED_REPEAT",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 10497 ],
-                                "description": "REPEAT",
-                                "type": "integer"
-                            },
-                            {
-                                "type": "integer"
-                            }
-                        ]
-                    },
-                    "wrapT": {
-                        "description": "t wrapping mode.",
-                        "default": 10497,
-                        "gltf_detailedDescription": "T (V) wrapping mode.  All valid values correspond to WebGL enums.",
-                        "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_WRAP_T",
-                        "anyOf": [
-                            {
-                                "enum": [ 33071 ],
-                                "description": "CLAMP_TO_EDGE",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 33648 ],
-                                "description": "MIRRORED_REPEAT",
-                                "type": "integer"
-                            },
-                            {
-                                "enum": [ 10497 ],
-                                "description": "REPEAT",
-                                "type": "integer"
-                            },
-                            {
-                                "type": "integer"
-                            }
-                        ]
-                    },
-                    "name": { },
-                    "extensions": { },
-                    "extras": { }
-                },
-                "gltf_webgl": "`texParameterf()`"
-
-
-             */
-
-
+            /// <summary>
+            /// TODO: 説明
+            /// Magnification filter.
+            /// Magnification filter.  Valid values correspond to WebGL enums: `9728` (NEAREST) and `9729` (LINEAR).
+            /// </summary>
+            /// <remarks>
+            /// "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_MAG_FILTER
+            /// </remarks>
+            public MagFilter? magFilter { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int? magFilter { get; set; } = null;
+            public enum MinFilter : int
+            {
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                NEAREST = 9728,
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                LINEAR = 9729,
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                NEAREST_MIPMAP_NEAREST = 9984,
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                LINEAR_MIPMAP_NEAREST = 9985,
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                NEAREST_MIPMAP_LINEAR = 9986,
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                LINEAR_MIPMAP_LINEAR = 9987
+            }
+
+            /// <summary>
+            /// TODO: 説明
+            /// Minification filter.
+            /// Minification filter.  All valid values correspond to WebGL enums.
+            /// </summary>
+            /// <remarks>
+            /// "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_MIN_FILTER"
+            /// </remarks>
+            public MinFilter? minFilter { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
             /// </summary>
-            public int? minFilter { get; set; } = null;
+            public enum Wrap : int
+            {
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                CLAMP_TO_EDGE = 33071,
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                MIRRORED_REPEAT = 33648,
+
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                REPEAT = 10497
+            }
 
             /// <summary>
             /// TODO: 説明
+            /// s wrapping mode.
+            /// S (U) wrapping mode.  All valid values correspond to WebGL enums.
             /// </summary>
-            public int? wrapS { get; set; } = null;
+            /// <remarks>
+            /// default": 10497
+            /// "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_WRAP_S"
+            /// </remarks>
+            public Wrap? wrapS { get; set; } = null;
 
             /// <summary>
             /// TODO: 説明
+            /// t wrapping mode.
+            /// T (V) wrapping mode.  All valid values correspond to WebGL enums.
             /// </summary>
-            public int? wrapT { get; set; } = null;
-
-
-
+            /// <remarks>
+            /// "default": 10497
+            /// "gltf_webgl": "`texParameterf()` with pname equal to TEXTURE_WRAP_T"
+            /// </remarks>
+            public Wrap? wrapT { get; set; } = null;
 
             /// <summary>
             /// 名前
+            /// TODO: 説明
             /// <br/>このアクセサの名前です。
             /// </summary>
             public string name { get; set; } = null;

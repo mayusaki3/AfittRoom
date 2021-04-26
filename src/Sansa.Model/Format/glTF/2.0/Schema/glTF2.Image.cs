@@ -41,10 +41,10 @@ namespace Sansa.Model.Format
             }
 
             /// <summary>
-            /// イメージのMIMEタイプ
-            /// <br/>bufferView が定義されている場合は必須です。
+            /// 名前
+            /// <br/>このイメージの名前です。
             /// </summary>
-            public MimeType? mimeType { get; set; } = null;
+            public string name { get; set; } = null;
 
             /// <summary>
             /// bufferView のインデックス
@@ -58,10 +58,10 @@ namespace Sansa.Model.Format
             public int? bufferView { get; set; } = null;
 
             /// <summary>
-            /// 名前
-            /// <br/>このイメージの名前です。
+            /// イメージのMIMEタイプ
+            /// <br/>bufferView が定義されている場合は必須です。
             /// </summary>
-            public string name { get; set; } = null;
+            public MimeType? mimeType { get; set; } = null;
 
             /// <summary>
             /// エクステンション

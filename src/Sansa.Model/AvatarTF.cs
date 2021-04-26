@@ -131,6 +131,10 @@ namespace Sansa.Model
             option.Converters.Add(new JsonConverterForNullableEnum<VRM0.FirstPerson.LookAtTypeName>());
             option.Converters.Add(new JsonConverterForNullableEnum<VRM0.FirstPerson.MeshAnnotation.FirstPersonFlag>());
             option.Converters.Add(new JsonConverterForNullableEnum<VRM0.BlendShape.Group.PresetName>());
+            option.Converters.Add(new JsonConverterForNullableEnumValue<glTF2.Mesh.Primitive.Mode>());
+            option.Converters.Add(new JsonConverterForNullableEnumValue<glTF2.Sampler.MagFilter>());
+            option.Converters.Add(new JsonConverterForNullableEnumValue<glTF2.Sampler.MinFilter>());
+            option.Converters.Add(new JsonConverterForNullableEnumValue<glTF2.Sampler.Wrap>());
         }
 
         #endregion

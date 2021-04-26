@@ -39,15 +39,6 @@ namespace Sansa.Model.Format
         public List<string> extensionsRequired { get; set; } = null;
 
         /// <summary>
-        /// アクセサのリスト
-        /// <br/>アクセサは bufferView への型付けされたビューです。
-        /// </summary>
-        /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
-        /// </remarks>
-        public List<Accessor> accessors { get; set; } = null;
-
-        /// <summary>
         /// アニメーションのリスト
         /// <br/>キーフレームアニメーションのリストです。
         /// </summary>
@@ -93,6 +84,15 @@ namespace Sansa.Model.Format
         public List<Camera> cameras { get; set; } = null;
 
         /// <summary>
+        /// アクセサのリスト
+        /// <br/>アクセサは bufferView への型付けされたビューです。
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        public List<Accessor> accessors { get; set; } = null;
+
+        /// <summary>
         /// 画像のリスト
         /// <br/>画像は、テクスチャを作成するためのデータを定義するものです。
         /// </summary>
@@ -100,6 +100,23 @@ namespace Sansa.Model.Format
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
         public List<Image> images { get; set; } = null;
+
+        /// <summary>
+        /// サンプラーのリスト
+        /// <br/>サンプラーには、テクスチャのフィルタリングやラッピングモードのプロパティが含まれています。
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        public List<Sampler> samplers { get; set; } = null;
+
+        /// <summary>
+        /// テクスチャーのリスト
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        public List<Texture> textures { get; set; } = null;
 
         /// <summary>
         /// マテリアルのリスト
@@ -128,15 +145,6 @@ namespace Sansa.Model.Format
         public List<Node> nodes { get; set; } = null;
 
         /// <summary>
-        /// サンプラーのリスト
-        /// <br/>サンプラーには、テクスチャのフィルタリングやラッピングモードのプロパティが含まれています。
-        /// </summary>
-        /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
-        /// </remarks>
-        public List<Sampler> samplers { get; set; } = null;
-
-        /// <summary>
         /// デフォルトシーンのインデックス
         /// </summary>
         /// <remarks>
@@ -160,14 +168,6 @@ namespace Sansa.Model.Format
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
         public List<Skin> skins { get; set; } = null;
-
-        /// <summary>
-        /// テクスチャーのリスト
-        /// </summary>
-        /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
-        /// </remarks>
-        public List<Texture> textures { get; set; } = null;
 
         /// <summary>
         /// アプリケーション固有のデータ

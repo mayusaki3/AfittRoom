@@ -39,6 +39,15 @@ namespace Sansa.Model.Format
             public int? byteOffset { get; set; } = null;
 
             /// <summary>
+            /// 属性のタイプ
+            /// <br/>属性がスカラー、ベクトル、マトリックスのいずれであるかを指定します。
+            /// </summary>
+            /// <remarks>
+            /// 必須項目
+            /// </remarks>
+            public AttributeType? type { get; set; } = null;
+
+            /// <summary>
             /// コンポーネントのデータタイプ
             /// </summary>
             public enum ComponentType : int
@@ -72,18 +81,6 @@ namespace Sansa.Model.Format
             public ComponentType? componentType { get; set; } = null;
 
             /// <summary>
-            /// 正規化
-            /// <br/>整数データの値をアクセスする際に、[0, 1](符号なしタイプの場合)
-            /// または[-1, 1](符号ありタイプの場合)に正規化する(true)か、
-            /// 直接変換する(false)かを指定します。
-            /// <br/>このプロパティは、頂点属性やアニメーションの出力データを含むアクセサにのみ定義されています。
-            /// </summary>
-            /// <remarks>
-            /// WebGLの場合: vertexAttribPointer() 正規化パラメータ
-            /// </remarks>
-            public bool? normalized { get; set; } = null;
-
-            /// <summary>
             /// 属性の数
             /// <br/>このアクセサが参照する属性の数。
             /// <br/>バイト数やコンポーネント数とは異なります。
@@ -92,37 +89,6 @@ namespace Sansa.Model.Format
             /// 必須項目
             /// </remarks>
             public int? count { get; set; } = null;
-
-            /// <summary>
-            /// 属性のタイプ
-            /// </summary>
-            public enum AttributeType : int
-            {
-                SCALAR,
-
-                VEC2,
-
-                VEC3,
-
-                VEC4,
-
-                MAT2,
-
-                MAT3,
-
-                MAT4,
-
-                @string
-            }
-
-            /// <summary>
-            /// 属性のタイプ
-            /// <br/>属性がスカラー、ベクトル、マトリックスのいずれであるかを指定します。
-            /// </summary>
-            /// <remarks>
-            /// 必須項目
-            /// </remarks>
-            public AttributeType? type { get; set; } = null;
 
             /// <summary>
             /// 各コンポーネントの最大値リスト
@@ -149,6 +115,40 @@ namespace Sansa.Model.Format
             /// 指定する場合、リストの要素は 1 から 16 個の範囲で定義します。
             /// </remarks>
             public List<float> min { get; set; } = null;
+
+            /// <summary>
+            /// 正規化
+            /// <br/>整数データの値をアクセスする際に、[0, 1](符号なしタイプの場合)
+            /// または[-1, 1](符号ありタイプの場合)に正規化する(true)か、
+            /// 直接変換する(false)かを指定します。
+            /// <br/>このプロパティは、頂点属性やアニメーションの出力データを含むアクセサにのみ定義されています。
+            /// </summary>
+            /// <remarks>
+            /// WebGLの場合: vertexAttribPointer() 正規化パラメータ
+            /// </remarks>
+            public bool? normalized { get; set; } = null;
+
+            /// <summary>
+            /// 属性のタイプ
+            /// </summary>
+            public enum AttributeType : int
+            {
+                SCALAR,
+
+                VEC2,
+
+                VEC3,
+
+                VEC4,
+
+                MAT2,
+
+                MAT3,
+
+                MAT4,
+
+                @string
+            }
 
             /// <summary>
             /// スパース

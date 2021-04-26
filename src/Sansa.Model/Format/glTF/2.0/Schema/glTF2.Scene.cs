@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -7,6 +8,7 @@ namespace Sansa.Model.Format
         /// <summary>
         /// シーン
         /// TODO: 説明
+        /// The root nodes of a scene.
         /// </summary>
         /// <remarks>
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/scene.schema.json
@@ -14,40 +16,20 @@ namespace Sansa.Model.Format
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public partial class Scene
         {
-            /*
-
-
-                "$schema": "http://json-schema.org/draft-04/schema",
-                "title": "Scene",
-                "type": "object",
-                "description": "The root nodes of a scene.",
-                "allOf": [ { "$ref": "glTFChildOfRootProperty.schema.json" } ],
-                "properties": {
-                    "nodes": {
-                        "type": "array",
-                        "description": "The indices of each root node.",
-                        "items": {
-                            "$ref": "glTFid.schema.json"
-                        },
-                        "uniqueItems": true,
-                        "minItems": 1
-                    },
-                    "name": { },
-                    "extensions": { },
-                    "extras": { }
-
-             */
             /// <summary>
             /// ノードリスト（ノードリストのインデックス）
+            /// TODO: 説明
+            /// The indices of each root node.
             /// </summary>
-            public int?[] nodes { get; set; } = null;
-
-
-
+            /// <remarks>
+            /// "uniqueItems": true
+            /// "minItems": 1
+            /// </remarks>
+            public List<int> nodes { get; set; } = null;
 
             /// <summary>
             /// 名前
-            /// <br/>このアクセサの名前です。
+            /// <br/>このシーンの名前です。
             /// </summary>
             public string name { get; set; } = null;
 

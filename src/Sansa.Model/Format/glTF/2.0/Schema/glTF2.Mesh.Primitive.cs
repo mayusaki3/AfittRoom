@@ -28,113 +28,75 @@ namespace Sansa.Model.Format
                 /// </remarks>
                 public Attributes attributes { get; set; } = null;
 
-
-                /*
-                 
-    "properties": {
-        "attributes": {
-            "type": "object",
-            "description": "A dictionary object, where each key corresponds to mesh attribute semantic and each value is the index of the accessor containing attribute's data.",
-            "minProperties": 1,
-            "additionalProperties": {
-                "$ref": "glTFid.schema.json"
-            }
-        },
-        "indices": {
-            "allOf": [ { "$ref": "glTFid.schema.json" } ],
-            "description": "The index of the accessor that contains the indices.",
-            "gltf_detailedDescription": "The index of the accessor that contains mesh indices.  When this is not defined, the primitives should be rendered without indices using `drawArrays()`.  When defined, the accessor must contain indices: the `bufferView` referenced by the accessor should have a `target` equal to 34963 (ELEMENT_ARRAY_BUFFER); `componentType` must be 5121 (UNSIGNED_BYTE), 5123 (UNSIGNED_SHORT) or 5125 (UNSIGNED_INT), the latter may require enabling additional hardware support; `type` must be `\"SCALAR\"`. For triangle primitives, the front face has a counter-clockwise (CCW) winding order. Values of the index accessor must not include the maximum value for the given component type, which triggers primitive restart in several graphics APIs and would require client implementations to rebuild the index buffer. Primitive restart values are disallowed and all index values must refer to actual vertices. As a result, the index accessor's values must not exceed the following maxima: BYTE `< 255`, UNSIGNED_SHORT `< 65535`, UNSIGNED_INT `< 4294967295`."
-        },
-        "material": {
-            "allOf": [ { "$ref": "glTFid.schema.json" } ],
-            "description": "The index of the material to apply to this primitive when rendering."
-        },
-        "mode": {
-            "description": "The type of primitives to render.",
-            "default": 4,
-            "gltf_detailedDescription": "The type of primitives to render. All valid values correspond to WebGL enums.",
-            "anyOf": [
-                {
-                    "enum": [ 0 ],
-                    "description": "POINTS",
-                    "type": "integer"
-                },
-                {
-                    "enum": [ 1 ],
-                    "description": "LINES",
-                    "type": "integer"
-                },
-                {
-                    "enum": [ 2 ],
-                    "description": "LINE_LOOP",
-                    "type": "integer"
-                },
-                {
-                    "enum": [ 3 ],
-                    "description": "LINE_STRIP",
-                    "type": "integer"
-                },
-                {
-                    "enum": [ 4 ],
-                    "description": "TRIANGLES",
-                    "type": "integer"
-                },
-                {
-                    "enum": [ 5 ],
-                    "description": "TRIANGLE_STRIP",
-                    "type": "integer"
-                },
-                {
-                    "enum": [ 6 ],
-                    "description": "TRIANGLE_FAN",
-                    "type": "integer"
-                },
-                {
-                    "type": "integer"
-                }
-            ]
-        },
-        "targets": {
-            "type": "array",
-            "description": "An array of Morph Targets, each  Morph Target is a dictionary mapping attributes (only `POSITION`, `NORMAL`, and `TANGENT` supported) to their deviations in the Morph Target.",
-            "items": {
-                "type": "object",
-                "minProperties": 1,
-                "additionalProperties": {
-                    "$ref": "glTFid.schema.json"
-                },
-                "description": "A dictionary object specifying attributes displacements in a Morph Target, where each key corresponds to one of the three supported attribute semantic (`POSITION`, `NORMAL`, or `TANGENT`) and each value is the index of the accessor containing the attribute displacements' data."
-            },
-            "minItems": 1
-        },
-                 
-                 */
-
-
-
                 /// <summary>
                 /// TODO: 説明
-                /// </summary>
-                public int? mode { get; set; } = null;
-
-                /// <summary>
-                /// TODO: 説明
+                /// The index of the accessor that contains the indices.
+                /// The index of the accessor that contains mesh indices.  When this is not defined, the primitives should be rendered without indices using `drawArrays()`.  When defined, the accessor must contain indices: the `bufferView` referenced by the accessor should have a `target` equal to 34963 (ELEMENT_ARRAY_BUFFER); `componentType` must be 5121 (UNSIGNED_BYTE), 5123 (UNSIGNED_SHORT) or 5125 (UNSIGNED_INT), the latter may require enabling additional hardware support; `type` must be `\"SCALAR\"`. For triangle primitives, the front face has a counter-clockwise (CCW) winding order. Values of the index accessor must not include the maximum value for the given component type, which triggers primitive restart in several graphics APIs and would require client implementations to rebuild the index buffer. Primitive restart values are disallowed and all index values must refer to actual vertices. As a result, the index accessor's values must not exceed the following maxima: BYTE `< 255`, UNSIGNED_SHORT `< 65535`, UNSIGNED_INT `< 4294967295`.
                 /// </summary>
                 public int? indices { get; set; } = null;
 
-
                 /// <summary>
                 /// TODO: 説明
+                /// The index of the material to apply to this primitive when rendering.
                 /// </summary>
                 public int? material { get; set; } = null;
 
                 /// <summary>
                 /// TODO: 説明
                 /// </summary>
-      //          public Target[] targets { get; set; } = null;
+                public enum Mode : int
+                {
+                    /// <summary>
+                    /// TODO: 説明
+                    /// </summary>
+                    POINTS = 0,
+
+                    /// <summary>
+                    /// TODO: 説明
+                    /// </summary>
+                    LINES = 1,
+
+                    /// <summary>
+                    /// TODO: 説明
+                    /// </summary>
+                    LINE_LOOP = 2,
 
 
+                    /// <summary>
+                    /// TODO: 説明
+                    /// </summary>
+                    LINE_STRIP = 3,
 
+
+                    /// <summary>
+                    /// TODO: 説明
+                    /// </summary>
+                    TRIANGLES = 4,
+
+
+                    /// <summary>
+                    /// TODO: 説明
+                    /// </summary>
+                    TRIANGLE_STRIP = 5,
+
+                    /// <summary>
+                    /// TODO: 説明
+                    /// </summary>
+                    TRIANGLE_FAN = 6
+                }
+
+                /// <summary>
+                /// TODO: 説明
+                /// The type of primitives to render.
+                /// The type of primitives to render. All valid values correspond to WebGL enums.
+                /// </summary>
+                public int? mode { get; set; } = null;
+
+                /// <summary>
+                /// TODO: 説明
+                /// An array of Morph Targets, each  Morph Target is a dictionary mapping attributes (only `POSITION`, `NORMAL`, and `TANGENT` supported) to their deviations in the Morph Target.
+                /// </summary>
+                public List<Target> targets { get; set; } = null;
 
                 /// <summary>
                 /// エクステンション

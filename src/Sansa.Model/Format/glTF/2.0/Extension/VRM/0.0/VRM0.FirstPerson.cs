@@ -83,7 +83,6 @@ namespace Sansa.Model.Format
                     /// TODO: 説明
                     /// </summary>
                     public DegreeMap lookAtVerticalUp { get; set; } = null;
-
                 }
             }
         }
