@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using Sansa.Model;
 using System.Collections.Generic;
+using System.IO;
 
 namespace VRoomWin
 {
@@ -18,6 +19,9 @@ namespace VRoomWin
             LoggingSettings.LoggingMode = LoggingMode.Week;
 
             Logging.Write("実行ログを " + LoggingSettings.Folder + " に出力します。");
+            Logging.Write(@"JSON部分の入力/出力結果を C:\WORKPLACE\VRoom に出力します。");
+            Logging.Write("定義に出力順は、検証用にglFT/VRMのスキーマ定義ではなく、VRoid Studioに合わせています。");
+            Logging.Write("現状、float値の出力時に、値が丸められます。また指数がEで出力されます。");
 
             //    International.ChangeCultureFromDisplayLanguageName("en-US");
 
@@ -33,7 +37,7 @@ namespace VRoomWin
         private void BtnInOpn_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new();
-            dlg.Filter = "VRMファイル(*.vrm)|*.vrm|すべてのファイル(*.*)|*.*";
+            dlg.Filter = "VRMファイル(*.vrm)|*.vrm|GLBファイル(*.glb)|*.glb|glTFファイル(*.gltf;*.glt)|*.vrm;*.glt|すべてのファイル(*.*)|*.*";
             dlg.FilterIndex = 1;
             dlg.Title = "対象のファイルを選択してください。";
             if (dlg.ShowDialog() == DialogResult.OK)
@@ -47,7 +51,7 @@ namespace VRoomWin
         {
             SaveFileDialog dlg = new();
             dlg.FileName = txtOutVrm.Text;
-            dlg.Filter = "VRMファイル(*.vrm)|*.vrm|すべてのファイル(*.*)|*.*";
+            dlg.Filter = "VRMファイル(*.vrm)|*.vrm|GLBファイル(*.glb)|*.glb|glTFファイル(*.gltf;*.glt)|*.vrm;*.glt";
             dlg.FilterIndex = 1;
             dlg.Title = "保存先のファイルを指定してください。";
             if (dlg.ShowDialog() == DialogResult.OK)
@@ -60,11 +64,16 @@ namespace VRoomWin
         {
             try
             {
-
-                glb.Load(txtInVrm.Text);
-
-                ava.Load(glb.ChunkList);
-
+                string filename = txtInVrm.Text;
+                switch (Path.GetExtension(filename).ToLower())
+                {
+                    case ".vrm":
+                    case ".glb":
+                        glb.Load(filename);
+                        ava.Load(glb.ChunkList);
+                        break;
+                
+                }
                 propertyGrid1.SelectedObject = ava.avatarTF.schema;
             }
             catch (Exception ex)
@@ -77,11 +86,16 @@ namespace VRoomWin
         {
             try
             {
-                ava.Save(out List<GLB_Chunk> clst);
-
-                glb.ChunkList[0] = clst[0];
-
-                glb.Save(txtOutVrm.Text);
+                string filename = txtInVrm.Text;
+                switch (Path.GetExtension(filename).ToLower())
+                {
+                    case ".vrm":
+                    case ".glb":
+                        ava.Save(out List<GLB_Chunk> clst);
+                        glb.ChunkList[0] = clst[0];
+                        glb.Save(txtOutVrm.Text);
+                        break;
+                }
             }
             catch (Exception ex)
             {

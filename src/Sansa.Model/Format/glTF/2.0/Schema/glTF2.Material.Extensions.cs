@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using static Sansa.Model.Format.glTF2.Extension;
 
 namespace Sansa.Model.Format
 {
@@ -17,6 +18,10 @@ namespace Sansa.Model.Format
             [TypeConverter(typeof(ExpandableObjectConverter))]
             public class Extensions
             {
+                /// <summary>
+                /// 非発光マテリアル
+                /// </summary>
+                public KHR_Materials_Unlit KHR_materials_unlit { get; set; } = null;
             }
         }
     }

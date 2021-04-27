@@ -30,7 +30,7 @@ namespace Sansa.Model
             string fnam = @"C:\WORKPLACE\VRoom\LOAD.txt";
             using (StreamWriter sw = new(fnam))
             {
-                sw.WriteLine(js.Replace(",", ",\r\n"));
+                sw.WriteLine(js.Replace(",", ",\r\n").TrimEnd());
                 Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
             }
 

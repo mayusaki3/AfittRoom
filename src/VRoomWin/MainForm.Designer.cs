@@ -78,17 +78,17 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 15);
+            this.label1.Size = new System.Drawing.Size(121, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "入力VRM：";
+            this.label1.Text = "入力VRM/GLB/glTF：";
             // 
             // txtInVrm
             // 
             this.txtInVrm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInVrm.Location = new System.Drawing.Point(86, 37);
+            this.txtInVrm.Location = new System.Drawing.Point(133, 37);
             this.txtInVrm.Name = "txtInVrm";
-            this.txtInVrm.Size = new System.Drawing.Size(661, 23);
+            this.txtInVrm.Size = new System.Drawing.Size(614, 23);
             this.txtInVrm.TabIndex = 1;
             // 
             // btnInOpn
@@ -130,17 +130,17 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 15);
+            this.label2.Size = new System.Drawing.Size(121, 15);
             this.label2.TabIndex = 5;
-            this.label2.Text = "出力VRM：";
+            this.label2.Text = "出力VRM/GLB/glTF：";
             // 
             // txtOutVrm
             // 
             this.txtOutVrm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOutVrm.Location = new System.Drawing.Point(86, 68);
+            this.txtOutVrm.Location = new System.Drawing.Point(133, 68);
             this.txtOutVrm.Name = "txtOutVrm";
-            this.txtOutVrm.Size = new System.Drawing.Size(661, 23);
+            this.txtOutVrm.Size = new System.Drawing.Size(614, 23);
             this.txtOutVrm.TabIndex = 6;
             // 
             // label3

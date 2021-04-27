@@ -19,6 +19,20 @@ namespace Sansa.Model.Format
             public partial class Primitive
             {
                 /// <summary>
+                /// TODO: 説明
+                /// The type of primitives to render.
+                /// The type of primitives to render. All valid values correspond to WebGL enums.
+                /// </summary>
+                public int? mode { get; set; } = null;
+
+                /// <summary>
+                /// TODO: 説明
+                /// The index of the accessor that contains the indices.
+                /// The index of the accessor that contains mesh indices.  When this is not defined, the primitives should be rendered without indices using `drawArrays()`.  When defined, the accessor must contain indices: the `bufferView` referenced by the accessor should have a `target` equal to 34963 (ELEMENT_ARRAY_BUFFER); `componentType` must be 5121 (UNSIGNED_BYTE), 5123 (UNSIGNED_SHORT) or 5125 (UNSIGNED_INT), the latter may require enabling additional hardware support; `type` must be `\"SCALAR\"`. For triangle primitives, the front face has a counter-clockwise (CCW) winding order. Values of the index accessor must not include the maximum value for the given component type, which triggers primitive restart in several graphics APIs and would require client implementations to rebuild the index buffer. Primitive restart values are disallowed and all index values must refer to actual vertices. As a result, the index accessor's values must not exceed the following maxima: BYTE `< 255`, UNSIGNED_SHORT `< 65535`, UNSIGNED_INT `< 4294967295`.
+                /// </summary>
+                public int? indices { get; set; } = null;
+
+                /// <summary>
                 /// 属性のディクショナリーオブジェクト
                 /// <br/>各キーはメッシュ属性のセマンティックに対応し、各値は属性のデータを含むアクセサのインデックスです。
                 /// </summary>
@@ -27,13 +41,6 @@ namespace Sansa.Model.Format
                 /// <br/>最低１つ以上定義します。
                 /// </remarks>
                 public Attributes attributes { get; set; } = null;
-
-                /// <summary>
-                /// TODO: 説明
-                /// The index of the accessor that contains the indices.
-                /// The index of the accessor that contains mesh indices.  When this is not defined, the primitives should be rendered without indices using `drawArrays()`.  When defined, the accessor must contain indices: the `bufferView` referenced by the accessor should have a `target` equal to 34963 (ELEMENT_ARRAY_BUFFER); `componentType` must be 5121 (UNSIGNED_BYTE), 5123 (UNSIGNED_SHORT) or 5125 (UNSIGNED_INT), the latter may require enabling additional hardware support; `type` must be `\"SCALAR\"`. For triangle primitives, the front face has a counter-clockwise (CCW) winding order. Values of the index accessor must not include the maximum value for the given component type, which triggers primitive restart in several graphics APIs and would require client implementations to rebuild the index buffer. Primitive restart values are disallowed and all index values must refer to actual vertices. As a result, the index accessor's values must not exceed the following maxima: BYTE `< 255`, UNSIGNED_SHORT `< 65535`, UNSIGNED_INT `< 4294967295`.
-                /// </summary>
-                public int? indices { get; set; } = null;
 
                 /// <summary>
                 /// TODO: 説明
@@ -61,18 +68,15 @@ namespace Sansa.Model.Format
                     /// </summary>
                     LINE_LOOP = 2,
 
-
                     /// <summary>
                     /// TODO: 説明
                     /// </summary>
                     LINE_STRIP = 3,
 
-
                     /// <summary>
                     /// TODO: 説明
                     /// </summary>
                     TRIANGLES = 4,
-
 
                     /// <summary>
                     /// TODO: 説明
@@ -84,13 +88,6 @@ namespace Sansa.Model.Format
                     /// </summary>
                     TRIANGLE_FAN = 6
                 }
-
-                /// <summary>
-                /// TODO: 説明
-                /// The type of primitives to render.
-                /// The type of primitives to render. All valid values correspond to WebGL enums.
-                /// </summary>
-                public int? mode { get; set; } = null;
 
                 /// <summary>
                 /// TODO: 説明

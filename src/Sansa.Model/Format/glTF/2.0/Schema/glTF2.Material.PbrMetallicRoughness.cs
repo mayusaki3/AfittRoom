@@ -17,17 +17,6 @@ namespace Sansa.Model.Format
             public class PbrMetallicRoughness
             {
                 /// <summary>
-                /// ベースカラー係数
-                /// <br/>素材のベースとなるカラー係数です。
-                /// </summary>
-                /// <remarks>
-                /// 既定値 = [ 1.0, 1.0, 1.0, 1.0 ]
-                /// <br/>最小 = 0.0
-                /// <br/>最大 = 1.0
-                /// </remarks>
-                public float?[] baseColorFactor { get; set; } = null;
-
-                /// <summary>
                 /// ベースカラーテクスチャ
                 /// <br/>最初の3成分（RGB）は、sRGBのトランスファー関数でエンコードされます。
                 /// <br/>素材のベースカラーを指定します。
@@ -38,6 +27,16 @@ namespace Sansa.Model.Format
                 /// </summary>
                 public TextureInfo baseColorTexture { get; set; } = null;
 
+                /// <summary>
+                /// ベースカラー係数
+                /// <br/>素材のベースとなるカラー係数です。
+                /// </summary>
+                /// <remarks>
+                /// 既定値 = [ 1.0, 1.0, 1.0, 1.0 ]
+                /// <br/>最小 = 0.0
+                /// <br/>最大 = 1.0
+                /// </remarks>
+                public float?[] baseColorFactor { get; set; } = null;
 
                 /// <summary>
                 /// マテリアルの金属感

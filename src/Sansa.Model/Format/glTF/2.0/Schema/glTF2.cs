@@ -137,6 +137,15 @@ namespace Sansa.Model.Format
         public List<Mesh> meshes { get; set; } = null;
 
         /// <summary>
+        /// スキンのリスト
+        /// <br/>スキンはジョイントとマトリクスで定義されます。
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        public List<Skin> skins { get; set; } = null;
+
+        /// <summary>
         /// ノードのリスト
         /// </summary>
         /// <remarks>
@@ -144,13 +153,6 @@ namespace Sansa.Model.Format
         /// </remarks>
         public List<Node> nodes { get; set; } = null;
 
-        /// <summary>
-        /// デフォルトシーンのインデックス
-        /// </summary>
-        /// <remarks>
-        /// 依存関係: scenes
-        /// </remarks>
-        public int? scene { get; set; } = null;
 
         /// <summary>
         /// シーンのリスト
@@ -161,13 +163,12 @@ namespace Sansa.Model.Format
         public List<Scene> scenes { get; set; } = null;
 
         /// <summary>
-        /// スキンのリスト
-        /// <br/>スキンはジョイントとマトリクスで定義されます。
+        /// デフォルトシーンのインデックス
         /// </summary>
         /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
+        /// 依存関係: scenes
         /// </remarks>
-        public List<Skin> skins { get; set; } = null;
+        public int? scene { get; set; } = null;
 
         /// <summary>
         /// アプリケーション固有のデータ
