@@ -12,7 +12,7 @@ namespace Sansa.Model.Format
         /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/bufferView.schema.json
         /// </remarks>
         [TypeConverter(typeof(ExpandableObjectConverter))]
-        public partial class Bufferview
+        public partial class BufferView
         {
             /// <summary>
             /// バッファのインデックス

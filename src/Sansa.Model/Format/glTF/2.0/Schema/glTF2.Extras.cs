@@ -20,11 +20,6 @@ namespace Sansa.Model.Format
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public class Extras
         {
-            /// <summary>
-            /// ターゲットの名前
-            /// <br/>
-            /// </summary>
-            public string[] targetNames { get; set; } = null;
         }
     }
 }

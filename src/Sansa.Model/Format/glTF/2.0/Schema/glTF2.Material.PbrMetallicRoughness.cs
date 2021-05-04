@@ -14,19 +14,8 @@ namespace Sansa.Model.Format
             /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.pbrMetallicRoughness.schema.json
             /// </remarks>
             [TypeConverter(typeof(ExpandableObjectConverter))]
-            public class PbrMetallicRoughness
+            public partial class PbrMetallicRoughness
             {
-                /// <summary>
-                /// ベースカラーテクスチャ
-                /// <br/>最初の3成分（RGB）は、sRGBのトランスファー関数でエンコードされます。
-                /// <br/>素材のベースカラーを指定します。
-                /// <br/>第4成分（A）が存在する場合は、素材の線形アルファカバレッジを表します。
-                /// <br/>それ以外の場合は、1.0のアルファを想定しています。
-                /// <br/>alphaModeプロパティは、アルファがどのように解釈されるかを指定します。
-                /// <br/>保存されているテクセルは、事前に乗算してはいけません。
-                /// </summary>
-                public TextureInfo baseColorTexture { get; set; } = null;
-
                 /// <summary>
                 /// ベースカラー係数
                 /// <br/>素材のベースとなるカラー係数です。
@@ -37,6 +26,18 @@ namespace Sansa.Model.Format
                 /// <br/>最大 = 1.0
                 /// </remarks>
                 public float?[] baseColorFactor { get; set; } = null;
+
+                /// <summary>
+                /// ベースカラーテクスチャ
+                /// <br/>最初の3成分（RGB）は、sRGBのトランスファー関数でエンコードされます。
+                /// <br/>素材のベースカラーを指定します。
+                /// <br/>第4成分（A）が存在する場合は、素材の線形アルファカバレッジを表します。
+                /// <br/>それ以外の場合は、1.0のアルファを想定しています。
+                /// <br/>alphaModeプロパティは、アルファがどのように解釈されるかを指定します。
+                /// <br/>保存されているテクセルは、事前に乗算してはいけません。
+                /// </summary>
+                public BaseColorTextureInfo baseColorTexture { get; set; } = null;
+
 
                 /// <summary>
                 /// マテリアルの金属感

@@ -40,10 +40,15 @@ namespace Sansa.Model.Format
             public int?[] children { get; set; } = null;
 
             /// <summary>
-            /// 名前
-            /// <br/>このノードの名前です。
+            /// スキン
+            /// <br/>このノードが参照するスキンのインデックスです。
+            /// <br/>シーン内のノードからスキンが参照される場合、
+            /// スキンが使用するすべてのジョイントは同じシーンに属していなければなりません。
             /// </summary>
-            public string name { get; set; } = null;
+            /// <remarks>
+            /// 依存関係: mesh
+            /// </remarks>
+            public int? skin { get; set; } = null;
 
             /// <summary>
             /// マトリックス
@@ -56,13 +61,10 @@ namespace Sansa.Model.Format
             public float?[] matrix { get;set;} = null;
 
             /// <summary>
-            /// 移動
-            /// <br/>ノードのX、Y、Z軸方向の移動量です。
+            /// メッシュ
+            /// <br/>このノードのメッシュのインデックスです。
             /// </summary>
-            /// <remarks>
-            /// 既定値 = [ 0.0, 0.0, 0.0 ]
-            /// </remarks>
-            public float?[] translation { get; set; } = null;
+            public int? mesh { get; set; } = null;
 
             /// <summary>
             /// 回転
@@ -85,6 +87,15 @@ namespace Sansa.Model.Format
             public float?[] scale { get; set; } = null;
 
             /// <summary>
+            /// 移動
+            /// <br/>ノードのX、Y、Z軸方向の移動量です。
+            /// </summary>
+            /// <remarks>
+            /// 既定値 = [ 0.0, 0.0, 0.0 ]
+            /// </remarks>
+            public float?[] translation { get; set; } = null;
+
+            /// <summary>
             /// ウェイト
             /// <br/>インスタンス化されたモーフターゲットのウェイトです。
             /// 要素の数は、使用するメッシュの Morph Target の数と一致しなければなりません。
@@ -95,21 +106,10 @@ namespace Sansa.Model.Format
             public List<float> weights { get; set; } = null;
 
             /// <summary>
-            /// メッシュ
-            /// <br/>このノードのメッシュのインデックスです。
+            /// 名前
+            /// <br/>このノードの名前です。
             /// </summary>
-            public int? mesh { get; set; } = null;
-
-            /// <summary>
-            /// スキン
-            /// <br/>このノードが参照するスキンのインデックスです。
-            /// <br/>シーン内のノードからスキンが参照される場合、
-            /// スキンが使用するすべてのジョイントは同じシーンに属していなければなりません。
-            /// </summary>
-            /// <remarks>
-            /// 依存関係: mesh
-            /// </remarks>
-            public int? skin { get; set; } = null;
+            public string name { get; set; } = null;
 
             /// <summary>
             /// エクステンション

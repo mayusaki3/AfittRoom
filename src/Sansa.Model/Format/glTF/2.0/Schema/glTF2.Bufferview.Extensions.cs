@@ -4,7 +4,7 @@ namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
-        public partial class Bufferview
+        public partial class BufferView
         {
             /// <summary>
             /// エクステンション

@@ -16,19 +16,6 @@ namespace Sansa.Model.Format
             public partial class NormalTextureInfo
             {
                 /// <summary>
-                /// テクスチャーの各法線ベクトルに適用されるスカラーマルチプライヤー
-                /// <br/>この値は式を使って法線ベクトルをスケーリングします。
-                /// <br/>scaledNormal = normalize((&lt;サンプル法線テクスチャ値&gt; * 2.0 - 1.0) * vec3(&lt;法線スケール&gt;
-                /// , &lt;法線スケール&gt;, 1.0))
-                /// <br/>normalTexture が指定されていない場合、この値は無視されます。
-                /// <br/>この値は線形です。
-                /// </summary>
-                /// <remarks>
-                /// 既定値 = 1.0
-                /// </remarks>
-                public float? scale { get; set; } = null;
-
-                /// <summary>
                 /// テクスチャーのインデックス
                 /// </summary>
                 /// <remarks>
@@ -48,6 +35,19 @@ namespace Sansa.Model.Format
                 /// <br/>最小 = 0
                 /// </remarks>
                 public int? texCoord { get; set; } = null;
+
+                /// <summary>
+                /// テクスチャーの各法線ベクトルに適用されるスカラーマルチプライヤー
+                /// <br/>この値は式を使って法線ベクトルをスケーリングします。
+                /// <br/>scaledNormal = normalize((&lt;サンプル法線テクスチャ値&gt; * 2.0 - 1.0) * vec3(&lt;法線スケール&gt;
+                /// , &lt;法線スケール&gt;, 1.0))
+                /// <br/>normalTexture が指定されていない場合、この値は無視されます。
+                /// <br/>この値は線形です。
+                /// </summary>
+                /// <remarks>
+                /// 既定値 = 1.0
+                /// </remarks>
+                public float? scale { get; set; } = null;
 
                 /// <summary>
                 /// エクステンション

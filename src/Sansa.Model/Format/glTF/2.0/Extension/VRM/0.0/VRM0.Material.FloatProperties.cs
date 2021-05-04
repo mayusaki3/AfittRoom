@@ -121,6 +121,41 @@ namespace Sansa.Model.Format
                         /// TODO: 説明
                         /// </summary>
                         public int? _ZWrite { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int? _MToonVersion { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int? _RimFresnelPower { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int? _RimLift { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int? _RimLightingMix { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int? _UvAnimRotation { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int? _UvAnimScrollX { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int? _UvAnimScrollY { get; set; } = null;
                     }
                 }
             }

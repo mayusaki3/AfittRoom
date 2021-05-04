@@ -42,6 +42,22 @@ namespace Sansa.Model.Format
                         /// </summary>
                         public bool? _NORMALMAP { get; set; } = null;
 
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public bool? _ALPHABLEND_ON { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public bool? MTOON_OUTLINE_COLOR_MIXED { get; set; } = null;
+
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public bool? MTOON_OUTLINE_WIDTH_SCREEN { get; set; } = null;
+
                     }
                 }
             }

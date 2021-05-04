@@ -1,6 +1,8 @@
 ﻿using Jaffa.Diagnostics;
 using Sansa.Model.Format;
 using Sansa.Model.FormatHelper;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -27,12 +29,9 @@ namespace Sansa.Model
             string js = rd.ReadToEnd();
 
 
-            string fnam = @"C:\WORKPLACE\VRoom\LOAD.txt";
-            using (StreamWriter sw = new(fnam))
-            {
-                sw.WriteLine(js.Replace(",", ",\r\n").TrimEnd());
-                Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
-            }
+            string fnam = @"C:\WORKPLACE\VRoom\LOAD.json";
+            WriteFormattedJson(fnam, js);
+            Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
 
             SetJsonSerializerOptions(out JsonSerializerOptions opt);
 
@@ -96,23 +95,20 @@ namespace Sansa.Model
             jsbytes.CopyTo(chunk0.ChunkData, 0);
             for (int i = jsbytes.Length; i < chunk0.ChunkLength; i++) chunk0.ChunkData[i] = 0x20;
 
-
-            string fnam = @"C:\WORKPLACE\VRoom\SAVE.txt";
-            using StreamWriter sw = new(fnam);
-            sw.WriteLine(js.Replace(",", ",\r\n"));
+            string fnam = @"C:\WORKPLACE\VRoom\SAVE.json";
+            WriteFormattedJson(fnam, js);
             Logging.Write("出力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
-
         }
 
         #endregion
 
-        #region JSONシリアル化のためのオプションを設定 (SetJsonSerializerOptions) [private]
+        #region JSONシリアル化のためのオプションを設定 (SetJsonSerializerOptions) [private/static]
 
         /// <summary>
         /// JSONシリアル化のためのオプションを設定
         /// </summary>
         /// <param name="ChunkList"></param>
-        private void SetJsonSerializerOptions(out JsonSerializerOptions option)
+        private static void SetJsonSerializerOptions(out JsonSerializerOptions option)
         {
             option = new()
             {
@@ -135,6 +131,124 @@ namespace Sansa.Model
             option.Converters.Add(new JsonConverterForNullableEnumValue<glTF2.Sampler.MagFilter>());
             option.Converters.Add(new JsonConverterForNullableEnumValue<glTF2.Sampler.MinFilter>());
             option.Converters.Add(new JsonConverterForNullableEnumValue<glTF2.Sampler.Wrap>());
+        }
+
+        #endregion
+
+        #region JSONを整形してファイルに出力 (WriteFormattedJson)
+
+        /// <summary>
+        /// JSONを整形してファイルに出力します。
+        /// </summary>
+        /// <param name="filename">出力ファイル名</param>
+        /// <param name="jsonText">JSONテキスト</param>
+        public void WriteFormattedJson(string filename, string jsonText)
+        {
+            int depth = 0;
+            JsonDocument jsdoc = JsonDocument.Parse(jsonText);
+            using (StreamWriter sw = new(filename.Replace(".json", "_1.json")))
+            {
+                sw.WriteLine(jsonText);
+            }
+            using (StreamWriter sw = new(filename))
+            {
+                WriteFormattedJsonOutput(jsdoc.RootElement, sw, depth);
+            }
+        }
+
+        private void WriteFormattedJsonOutput(JsonElement je, StreamWriter sw, int depth, string nam = "", string comma = "", bool skip = false)
+        {
+            int count = 0;
+            bool isWrite = false;
+            string sp = new(' ', depth * 4);
+            switch (je.ValueKind)
+            {
+                case JsonValueKind.Object:
+                    if (skip == false)
+                    {
+                        sw.Write(sp);
+                    }
+                    sw.Write("{");
+                    depth++;
+                    List<string> plist = new();
+                    foreach (JsonProperty p in je.EnumerateObject())
+                    {
+                        plist.Add(p.Name);
+                    }
+                    plist.Sort();
+                    foreach (string pnam in plist)
+                    {
+                        foreach (JsonProperty p in je.EnumerateObject())
+                        {
+                            if (p.Name.Equals(pnam))
+                            {
+                                if (isWrite == false)
+                                {
+                                    sw.WriteLine();
+                                    isWrite = true;
+                                }
+                                sw.Write(sp + "    \"" + p.Name + "\": ");
+                                if (p.Value.ValueKind == JsonValueKind.Array ||
+                                    p.Value.ValueKind == JsonValueKind.Object)
+                                {
+                                    skip = true;
+                                }
+                                else
+                                {
+                                    skip = false;
+                                }
+                                count++;
+                                WriteFormattedJsonOutput(p.Value, sw, depth, pnam, count < plist.Count ? "," : "", skip);
+                            }
+                        }
+                    }
+                    if (isWrite == true) sw.Write(sp);
+                    sw.WriteLine("}" + comma);
+                    break;
+                case JsonValueKind.Array:
+                    if (skip == false)
+                    {
+                        sw.Write(sp);
+                    }
+                    sw.Write("[");
+                    depth++;
+                    foreach (JsonElement e in je.EnumerateArray())
+                    {
+                        if (isWrite == false)
+                        {
+                            sw.WriteLine();
+                            isWrite = true;
+                        }
+                        if (e.ValueKind != JsonValueKind.Array &&
+                            e.ValueKind != JsonValueKind.Object)
+                        {
+                            sw.Write(sp + "    ");
+                        }
+                        count++;
+                        WriteFormattedJsonOutput(e, sw, depth, nam, count < je.GetArrayLength() ? ",":"");
+                    }
+                    if (isWrite == true) sw.Write(sp);
+                    sw.WriteLine("]" + comma);
+                    break;
+                case JsonValueKind.Null:
+                    sw.WriteLine(comma);
+                    break;
+                case JsonValueKind.True:
+                case JsonValueKind.False:
+                    sw.WriteLine(je.GetBoolean().ToString().ToLower() + comma);
+                    break;
+                case JsonValueKind.String:
+                    string txt = je.GetString();
+                    if (nam.ToLower().Contains("url") == true)
+                    {
+                        txt = Uri.EscapeUriString(txt);
+                    }
+                    sw.WriteLine("\"" + txt + "\"" + comma);
+                    break;
+                case JsonValueKind.Number:
+                    sw.WriteLine(je.ToString() + comma);
+                    break;
+            }
         }
 
         #endregion

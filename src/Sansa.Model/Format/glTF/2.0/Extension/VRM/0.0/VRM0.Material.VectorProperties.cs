@@ -80,6 +80,106 @@ namespace Sansa.Model.Format
                         /// TODO: 説明
                         /// </summary>
                         public float?[] _OutlineColor { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public float?[] _RimColor { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _RimTexture { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _UvAnimMaskTexture { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _BackTex { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _DetailAlbedoMap { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _DetailMask { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _DetailNormalMap { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _DownTex { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _FrontTex { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _LeftTex { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _LightTexture0 { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _LightTextureB0 { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _MetallicGlossMap { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _OcclusionMap { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _ParallaxMap { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _RightTex { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _SecondTex { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _ShadowMapTexture { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _ThirdTex { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明(?)
+                        /// </summary>
+                        public int?[] _UpTex { get; set; } = null;
                     }
                 }
             }

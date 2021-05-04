@@ -129,12 +129,6 @@ namespace Sansa.Model.Format
 
                         /// <summary>
                         /// TODO: 説明
-                        /// 0 or 1. Do not allow an intermediate value. Value should rounded
-                        /// </summary>
-                        public bool? isBinary { get; set; } = null;
-
-                        /// <summary>
-                        /// TODO: 説明
                         /// Low level blendshape references.
                         /// </summary>
                         public List<Bind> binds { get; set; } = null;
@@ -144,6 +138,12 @@ namespace Sansa.Model.Format
                         /// Material animation references.
                         /// </summary>
                         public List<MaterialBind> materialValues { get; set; } = null;
+
+                        /// <summary>
+                        /// TODO: 説明
+                        /// 0 or 1. Do not allow an intermediate value. Value should rounded
+                        /// </summary>
+                        public bool? isBinary { get; set; } = null;
                     }
                 }
             }

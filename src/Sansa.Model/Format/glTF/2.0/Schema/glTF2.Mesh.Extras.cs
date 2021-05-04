@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Sansa.Model.Format
 {
@@ -22,6 +23,10 @@ namespace Sansa.Model.Format
             [TypeConverter(typeof(ExpandableObjectConverter))]
             public class Extras
             {
+                /// <summary>
+                /// TODO: 説明
+                /// </summary>
+                public List<string> targetNames { get; set; } = null;
             }
         }
     }

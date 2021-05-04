@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using static Sansa.Model.Format.glTF2.Extension;
 
 namespace Sansa.Model.Format
 {
@@ -17,6 +18,10 @@ namespace Sansa.Model.Format
             [TypeConverter(typeof(ExpandableObjectConverter))]
             public class Extensions
             {
+                /// <summary>
+                /// TODO: 説明(?)
+                /// </summary>
+                KHR_Texture_Transform KHR_texture_transform { get; set; } = null;
             }
         }
     }

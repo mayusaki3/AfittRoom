@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel;
-using static Sansa.Model.Format.glTF2.Extension;
 
 namespace Sansa.Model.Format
 {
     public partial class glTF2
     {
-        public partial class Material
+        public partial class Extension
         {
-            public partial class NormalTextureInfo
+            public partial class KHR_Texture_Transform
             {
                 /// <summary>
                 /// エクステンション
@@ -20,10 +19,6 @@ namespace Sansa.Model.Format
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 public class Extensions
                 {
-                    /// <summary>
-                    /// TODO: 説明(?)
-                    /// </summary>
-                    public KHR_Texture_Transform KHR_texture_transform { get; set; } = null;
                 }
             }
         }

@@ -21,6 +21,16 @@ namespace Sansa.Model.Format
             public string name { get; set; } = null;
 
             /// <summary>
+            /// エクステンション
+            /// </summary>
+            public Extensions extensions { get; set; } = null;
+
+            /// <summary>
+            /// アプリケーション固有のデータ
+            /// </summary>
+            public Extras extras { get; set; } = null;
+
+            /// <summary>
             /// マテリアル PBR（物理ベースレンダリング）金属表面の粗さ
             /// <br/>Physically-Based Rendering (PBR)方法論の金属表面の粗さマテリアルモデルを
             /// 定義するために使用されるパラメータ値のセットです。
@@ -99,17 +109,6 @@ namespace Sansa.Model.Format
             }
 
             /// <summary>
-            /// マテリアルが両面であるかどうかを指定
-            /// <br/>この値が false の場合、バックフェイスカリングが有効になります。
-            /// <br/>この値が true の場合、バックフェイスカリングは無効になり、ダブルサイドライティングが有効になります。
-            /// <br/>照明方程式が評価される前に、裏表の法線が反転されている必要があります。
-            /// </summary>
-            /// <remarks>
-            /// 既定値 = false
-            /// </remarks>
-            public bool? doubleSided { get; set; } = null;
-
-            /// <summary>
             /// マテリアルのアルファレンダリングモード
             /// <br/>マテリアルのアルファ・レンダリング・モード列挙値で、
             /// メイン・ファクターとテクスチャのアルファ値の解釈を指定します。
@@ -135,14 +134,15 @@ namespace Sansa.Model.Format
             public float? alphaCutoff { get; set; } = null;
 
             /// <summary>
-            /// エクステンション
+            /// マテリアルが両面であるかどうかを指定
+            /// <br/>この値が false の場合、バックフェイスカリングが有効になります。
+            /// <br/>この値が true の場合、バックフェイスカリングは無効になり、ダブルサイドライティングが有効になります。
+            /// <br/>照明方程式が評価される前に、裏表の法線が反転されている必要があります。
             /// </summary>
-            public Extensions extensions { get; set; } = null;
-
-            /// <summary>
-            /// アプリケーション固有のデータ
-            /// </summary>
-            public Extras extras { get; set; } = null;
+            /// <remarks>
+            /// 既定値 = false
+            /// </remarks>
+            public bool? doubleSided { get; set; } = null;
         }
     }
 }

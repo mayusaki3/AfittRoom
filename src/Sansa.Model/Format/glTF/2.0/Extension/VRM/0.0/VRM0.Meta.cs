@@ -19,6 +19,12 @@ namespace Sansa.Model.Format
                 public class Meta
                 {
                     /// <summary>
+                    /// タイトル
+                    /// <br/>このモデルのタイトルです。
+                    /// </summary>
+                    public string title { get; set; } = null;
+
+                    /// <summary>
                     /// バージョン
                     /// <br/>このモデルのバージョンです。
                     /// </summary>
@@ -41,12 +47,6 @@ namespace Sansa.Model.Format
                     /// <br/>親作品に相当するものがある場合の参照URLなどを記述します。
                     /// </summary>
                     public string reference { get; set; } = null;
-
-                    /// <summary>
-                    /// タイトル
-                    /// <br/>このモデルのタイトルです。
-                    /// </summary>
-                    public string title { get; set; } = null;
 
                     /// <summary>
                     /// VRMモデルのサムネイル

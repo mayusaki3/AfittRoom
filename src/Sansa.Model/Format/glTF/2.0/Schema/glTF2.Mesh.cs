@@ -18,12 +18,6 @@ namespace Sansa.Model.Format
         public partial class Mesh
         {
             /// <summary>
-            /// 名前
-            /// <br/>このメッシュの名前です。
-            /// </summary>
-            public string name { get; set; } = null;
-
-            /// <summary>
             /// プリミティブのリスト
             /// <br/>マテリアルでレンダリングされるジオメトリを定義します。
             /// </summary>
@@ -41,6 +35,12 @@ namespace Sansa.Model.Format
             /// 指定する場合、最低１つ以上定義します。
             /// </remarks>
             public List<float> weights { get; set; } = null;
+
+            /// <summary>
+            /// 名前
+            /// <br/>このメッシュの名前です。
+            /// </summary>
+            public string name { get; set; } = null;
 
             /// <summary>
             /// エクステンション

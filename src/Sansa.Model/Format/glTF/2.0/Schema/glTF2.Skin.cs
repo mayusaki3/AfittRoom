@@ -23,6 +23,15 @@ namespace Sansa.Model.Format
             public int? inverseBindMatrices { get; set; } = null;
 
             /// <summary>
+            /// TODO: 説明
+            /// The index of the node used as a skeleton root.
+            /// </summary>
+            /// <remarks>
+            /// gltf_detailedDescription": "The index of the node used as a skeleton root. The node must be the closest common root of the joints hierarchy or a direct or indirect parent node of the closest common root.
+            /// </remarks>
+            public int? skeleton { get; set; } = null;
+
+            /// <summary>
             /// ジョイントリスト（ノードリストのインデックス）
             /// TODO: 説明
             /// Indices of skeleton nodes, used as joints in this skin.
@@ -34,15 +43,6 @@ namespace Sansa.Model.Format
             /// "minItems": 1
             /// </remarks>
             public List<int> joints { get; set; } = null;
-
-            /// <summary>
-            /// TODO: 説明
-            /// The index of the node used as a skeleton root.
-            /// </summary>
-            /// <remarks>
-            /// gltf_detailedDescription": "The index of the node used as a skeleton root. The node must be the closest common root of the joints hierarchy or a direct or indirect parent node of the closest common root.
-            /// </remarks>
-            public int? skeleton { get; set; } = null;
 
             /// <summary>
             /// 名前

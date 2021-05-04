@@ -24,11 +24,6 @@ namespace Sansa.Model.Format
         public List<string> extensionsUsed { get; set; } = null;
 
         /// <summary>
-        /// エクステンション
-        /// </summary>
-        public Extensions extensions { get; set; } = null;
-
-        /// <summary>
         /// 必須のエクステンション
         /// <br/>このアセットを正しく読み込むために必要なglTFエクステンションの名前リストです。
         /// </summary>
@@ -37,6 +32,15 @@ namespace Sansa.Model.Format
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
         public List<string> extensionsRequired { get; set; } = null;
+
+        /// <summary>
+        /// アクセサのリスト
+        /// <br/>アクセサは bufferView への型付けされたビューです。
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        public List<Accessor> accessors { get; set; } = null;
 
         /// <summary>
         /// アニメーションのリスト
@@ -72,7 +76,7 @@ namespace Sansa.Model.Format
         /// <remarks>
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public List<Bufferview> bufferViews { get; set; } = null;
+        public List<BufferView> bufferViews { get; set; } = null;
 
         /// <summary>
         /// カメラのリスト
@@ -84,15 +88,6 @@ namespace Sansa.Model.Format
         public List<Camera> cameras { get; set; } = null;
 
         /// <summary>
-        /// アクセサのリスト
-        /// <br/>アクセサは bufferView への型付けされたビューです。
-        /// </summary>
-        /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
-        /// </remarks>
-        public List<Accessor> accessors { get; set; } = null;
-
-        /// <summary>
         /// 画像のリスト
         /// <br/>画像は、テクスチャを作成するためのデータを定義するものです。
         /// </summary>
@@ -100,23 +95,6 @@ namespace Sansa.Model.Format
         /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
         public List<Image> images { get; set; } = null;
-
-        /// <summary>
-        /// サンプラーのリスト
-        /// <br/>サンプラーには、テクスチャのフィルタリングやラッピングモードのプロパティが含まれています。
-        /// </summary>
-        /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
-        /// </remarks>
-        public List<Sampler> samplers { get; set; } = null;
-
-        /// <summary>
-        /// テクスチャーのリスト
-        /// </summary>
-        /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
-        /// </remarks>
-        public List<Texture> textures { get; set; } = null;
 
         /// <summary>
         /// マテリアルのリスト
@@ -137,15 +115,6 @@ namespace Sansa.Model.Format
         public List<Mesh> meshes { get; set; } = null;
 
         /// <summary>
-        /// スキンのリスト
-        /// <br/>スキンはジョイントとマトリクスで定義されます。
-        /// </summary>
-        /// <remarks>
-        /// <br/>指定する場合、最低１つ以上定義します。
-        /// </remarks>
-        public List<Skin> skins { get; set; } = null;
-
-        /// <summary>
         /// ノードのリスト
         /// </summary>
         /// <remarks>
@@ -153,6 +122,22 @@ namespace Sansa.Model.Format
         /// </remarks>
         public List<Node> nodes { get; set; } = null;
 
+        /// <summary>
+        /// サンプラーのリスト
+        /// <br/>サンプラーには、テクスチャのフィルタリングやラッピングモードのプロパティが含まれています。
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        public List<Sampler> samplers { get; set; } = null;
+
+        /// <summary>
+        /// デフォルトシーンのインデックス
+        /// </summary>
+        /// <remarks>
+        /// 依存関係: scenes
+        /// </remarks>
+        public int? scene { get; set; } = null;
 
         /// <summary>
         /// シーンのリスト
@@ -163,12 +148,26 @@ namespace Sansa.Model.Format
         public List<Scene> scenes { get; set; } = null;
 
         /// <summary>
-        /// デフォルトシーンのインデックス
+        /// スキンのリスト
+        /// <br/>スキンはジョイントとマトリクスで定義されます。
         /// </summary>
         /// <remarks>
-        /// 依存関係: scenes
+        /// <br/>指定する場合、最低１つ以上定義します。
         /// </remarks>
-        public int? scene { get; set; } = null;
+        public List<Skin> skins { get; set; } = null;
+
+        /// <summary>
+        /// テクスチャーのリスト
+        /// </summary>
+        /// <remarks>
+        /// <br/>指定する場合、最低１つ以上定義します。
+        /// </remarks>
+        public List<Texture> textures { get; set; } = null;
+
+        /// <summary>
+        /// エクステンション
+        /// </summary>
+        public Extensions extensions { get; set; } = null;
 
         /// <summary>
         /// アプリケーション固有のデータ
