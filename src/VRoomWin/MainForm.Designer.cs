@@ -70,6 +70,7 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.ChkSortedWrite = new System.Windows.Forms.CheckBox();
             this.MenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -421,11 +422,22 @@
             this.propertyGrid1.TabIndex = 12;
             this.propertyGrid1.ToolbarVisible = false;
             // 
+            // ChkSortedWrite
+            // 
+            this.ChkSortedWrite.AutoSize = true;
+            this.ChkSortedWrite.Location = new System.Drawing.Point(655, 99);
+            this.ChkSortedWrite.Name = "ChkSortedWrite";
+            this.ChkSortedWrite.Size = new System.Drawing.Size(92, 19);
+            this.ChkSortedWrite.TabIndex = 13;
+            this.ChkSortedWrite.Text = "ソートして出力";
+            this.ChkSortedWrite.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 491);
+            this.Controls.Add(this.ChkSortedWrite);
             this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.btnOutOpn);
@@ -492,5 +504,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
+        private System.Windows.Forms.CheckBox ChkSortedWrite;
     }
 }

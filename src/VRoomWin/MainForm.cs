@@ -62,8 +62,10 @@ namespace VRoomWin
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
+            ava.avatarTF.IsSortedDebugWrite = ChkSortedWrite.Checked;
             try
             {
+                
                 string filename = txtInVrm.Text;
                 switch (Path.GetExtension(filename).ToLower())
                 {
@@ -74,7 +76,7 @@ namespace VRoomWin
                         break;
                 
                 }
-                propertyGrid1.SelectedObject = ava.avatarTF.schema;
+                propertyGrid1.SelectedObject = ava.avatarTF.Schema;
             }
             catch (Exception ex)
             {
@@ -84,6 +86,7 @@ namespace VRoomWin
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            ava.avatarTF.IsSortedDebugWrite = ChkSortedWrite.Checked;
             try
             {
                 string filename = txtInVrm.Text;
