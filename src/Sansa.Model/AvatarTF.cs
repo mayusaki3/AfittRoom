@@ -17,7 +17,6 @@ namespace Sansa.Model
 
         #region GLBチャンク0(JSON)のパース (Parse)
 
-
         /// <summary>
         /// GLBチャンク0(JSON)のパース
         /// </summary>
@@ -28,49 +27,12 @@ namespace Sansa.Model
             using var rd = new StreamReader(ms, Encoding.UTF8);
             string js = rd.ReadToEnd();
 
-
             string fnam = @"C:\WORKPLACE\VRoom\LOAD.json";
-            WriteFormattedJson(fnam, js);
+            WriteFormattedJson(fnam, js, IsSortedDebugWrite);
             Logging.Write("入力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
 
             SetJsonSerializerOptions(out JsonSerializerOptions opt);
-
-            //var jsonElems = JsonDocument.Parse(text);
-            //var elmLength = jsonElems.RootElement.GetProperty(TotalItems).GetInt32();
-
-
-
-            //JsonDocument jsdoc = JsonDocument.Parse(js);
-
-
-            //foreach (JsonElement je in jsdoc.RootElement.EnumerateArray())
-            //{
-            //    System.Diagnostics.Debug.Print(je.GetString());
-
-
-            //}
-
-
-
-            //object obj = JsonSerializer.Deserialize(js, opt);
-
-            schema = JsonSerializer.Deserialize<glTF2>(js, opt);
-
-            //Logging.Write("***VRM情報***");
-            //Logging.Write("[title]: " + avatarTF.schema.extensions.VRM.meta.title);
-            //Logging.Write("[author]: " + avatarTF.schema.extensions.VRM.meta.author);
-
-            //AvatarTF.EnumAttribute ea = avatarTF.GetEnumAttr<AvatarTF.Meta.AllowedUserName>(avatarTF.schema.extensions.VRM.meta.allowedUserName);
-            //Logging.Write("[allowedUserName]: " + ea.display + "  // " + ea.description);
-
-            //ea = avatarTF.GetEnumAttr<AvatarTF.Meta.AllowOrDisallow>(avatarTF.schema.extensions.VRM.meta.violentUssageName);
-            //Logging.Write("[violentUssageName]: " + ea.display);
-
-            //ea = avatarTF.GetEnumAttr<AvatarTF.Meta.AllowOrDisallow>(avatarTF.schema.extensions.VRM.meta.sexualUssageName);
-            //Logging.Write("[sexualUssageName]: " + ea.display);
-
-            //ea = avatarTF.GetEnumAttr<AvatarTF.Meta.LicenseName>(avatarTF.schema.extensions.VRM.meta.licenseName);
-            //Logging.Write("[licenseName]: " + ea.display + "  // " + ea.description);
+            Schema = JsonSerializer.Deserialize<glTF2>(js, opt);
         }
 
         #endregion
@@ -88,7 +50,7 @@ namespace Sansa.Model
 
             SetJsonSerializerOptions(out JsonSerializerOptions opt);
 
-            string js = JsonSerializer.Serialize(schema, opt);
+            string js = JsonSerializer.Serialize(Schema, opt);
             byte[] jsbytes = Encoding.UTF8.GetBytes(js);
             chunk0.ChunkLength = (uint)(jsbytes.Length + jsbytes.Length % 4);
             chunk0.ChunkData = new byte[chunk0.ChunkLength];
@@ -96,7 +58,7 @@ namespace Sansa.Model
             for (int i = jsbytes.Length; i < chunk0.ChunkLength; i++) chunk0.ChunkData[i] = 0x20;
 
             string fnam = @"C:\WORKPLACE\VRoom\SAVE.json";
-            WriteFormattedJson(fnam, js);
+            WriteFormattedJson(fnam, js, IsSortedDebugWrite);
             Logging.Write("出力VRMのチャンク0(JSON)を " + fnam + " に出力しました。");
         }
 
@@ -142,7 +104,8 @@ namespace Sansa.Model
         /// </summary>
         /// <param name="filename">出力ファイル名</param>
         /// <param name="jsonText">JSONテキスト</param>
-        public void WriteFormattedJson(string filename, string jsonText)
+        /// <param name="sort">true=プロパティをソートする</param>
+        public void WriteFormattedJson(string filename, string jsonText, bool sort)
         {
             int depth = 0;
             JsonDocument jsdoc = JsonDocument.Parse(jsonText);
@@ -152,11 +115,11 @@ namespace Sansa.Model
             }
             using (StreamWriter sw = new(filename))
             {
-                WriteFormattedJsonOutput(jsdoc.RootElement, sw, depth);
+                WriteFormattedJsonOutput(jsdoc.RootElement, sw, depth, sort);
             }
         }
 
-        private void WriteFormattedJsonOutput(JsonElement je, StreamWriter sw, int depth, string nam = "", string comma = "", bool skip = false)
+        private void WriteFormattedJsonOutput(JsonElement je, StreamWriter sw, int depth, bool sort, string nam = "", string comma = "", bool skip = false)
         {
             int count = 0;
             bool isWrite = false;
@@ -175,7 +138,7 @@ namespace Sansa.Model
                     {
                         plist.Add(p.Name);
                     }
-                    plist.Sort();
+                    if (sort == true) plist.Sort();
                     foreach (string pnam in plist)
                     {
                         foreach (JsonProperty p in je.EnumerateObject())
@@ -198,7 +161,7 @@ namespace Sansa.Model
                                     skip = false;
                                 }
                                 count++;
-                                WriteFormattedJsonOutput(p.Value, sw, depth, pnam, count < plist.Count ? "," : "", skip);
+                                WriteFormattedJsonOutput(p.Value, sw, depth, sort, pnam, count < plist.Count ? "," : "", skip);
                             }
                         }
                     }
@@ -225,7 +188,7 @@ namespace Sansa.Model
                             sw.Write(sp + "    ");
                         }
                         count++;
-                        WriteFormattedJsonOutput(e, sw, depth, nam, count < je.GetArrayLength() ? ",":"");
+                        WriteFormattedJsonOutput(e, sw, depth, sort, nam, count < je.GetArrayLength() ? ",":"");
                     }
                     if (isWrite == true) sw.Write(sp);
                     sw.WriteLine("]" + comma);
@@ -238,12 +201,7 @@ namespace Sansa.Model
                     sw.WriteLine(je.GetBoolean().ToString().ToLower() + comma);
                     break;
                 case JsonValueKind.String:
-                    string txt = je.GetString();
-                    if (nam.ToLower().Contains("url") == true)
-                    {
-                        txt = Uri.EscapeUriString(txt);
-                    }
-                    sw.WriteLine("\"" + txt + "\"" + comma);
+                    sw.WriteLine("\"" + je.GetString() + "\"" + comma);
                     break;
                 case JsonValueKind.Number:
                     sw.WriteLine(je.ToString() + comma);
@@ -278,9 +236,18 @@ namespace Sansa.Model
         #region
 
         /// <summary>
-        /// TODO: 説明
+        /// ソート
         /// </summary>
-        public glTF2 schema { get; set; }
+        public bool IsSortedDebugWrite { get; set; } = true;
+
+        #endregion
+
+        #region glTFスキーマ ([R/W] Schema)
+
+        /// <summary>
+        /// glTFスキーマ
+        /// </summary>
+        public glTF2 Schema { get; set; }
 
 
         #endregion
