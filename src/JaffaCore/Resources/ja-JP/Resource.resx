@@ -127,13 +127,16 @@
     <value>バージョン</value>
   </data>
   <data name="LOGGING_EXCEPTION" xml:space="preserve">
-    <value>ログ出力中に例外が発生しました</value>
+    <value>ログ出力中に例外が発生しました。</value>
   </data>
   <data name="NOT_SUPPORTED" xml:space="preserve">
-    <value>未サポートです</value>
+    <value>未サポートです。</value>
   </data>
-  <data name="TIME_CHANGE" xml:space="preserve">
-    <value>Jaffaフレームワークの現在時刻が変更されました</value>
+  <data name="TIME_AFTER_CHANGE" xml:space="preserve">
+    <value>Jaffaフレームワークの現在時刻が変更されました。</value>
+  </data>
+  <data name="TIME_BEFORE_CHANGE" xml:space="preserve">
+    <value>Jaffaフレームワークの現在時刻が変更されます。</value>
   </data>
   <data name="TIME_FORMAT" xml:space="preserve">
     <value>yyyy/MM/dd HH:mm:ss</value>

@@ -35,7 +35,7 @@ namespace Jaffa.Diagnostics
         /// </summary>
         /// <param name="message">メッセージ</param>
         /// <param name="type">ログタイプ</param>
-        public static void Write(String message, LogType type = LogType.Information)
+        public static void Write(String message = "", LogType type = LogType.Information)
         {
             Write(new string[] { message }, type);
         }
@@ -258,7 +258,7 @@ namespace Jaffa.Diagnostics
 
         private static async void WriteLogFileAsync()
         {
-            while (logWriteWaiting == false && syslogWriteWaiting == false && !loggingBuffer.IsEmpty)
+            while (_LogWriteWaiting == false && _SyslogWriteWaiting == false && !loggingBuffer.IsEmpty)
             {
                 await writeisLock.WaitAsync();
                 try
@@ -348,55 +348,57 @@ namespace Jaffa.Diagnostics
         #region ログ出力中断を参照または設定 ([R/W] LogWriteWaiting)
 
         /// <summary>
-        /// ログ出力中断を参照または設定します。trueの場合、メモリ上にバッファリングされます。
+        /// ログ出力中断を参照または設定します。
+        /// 既定値は true ですので、必要な初期化が終わったら false に設定して解除してください。
+        /// trueの場合、メモリ上にバッファリングされます。
         /// </summary>
         public static bool LogWriteWaiting
         {
             get
             {
-                return logWriteWaiting;
+                return _LogWriteWaiting;
             }
             set
             {
-                logWriteWaiting = value;
-                if (!logWriteWaiting)
+                _LogWriteWaiting = value;
+                if (!_LogWriteWaiting)
                 {
                     WriteLogFileAsync();
                 }
             }
         }
-        private static bool logWriteWaiting = true;
+        private static bool _LogWriteWaiting = true;
 
         #endregion
 
         #region Jaffaフレームワーク内ログ出力中断を参照または設定 ([R/W] SysLogWriteWaiting)
 
         /// <summary>
-        /// ログ出力中断を参照または設定します。Jaffaフレームワーク内で使用します。
+        /// ログ出力中断を参照または設定します。既定値は false です。Jaffaフレームワーク内で使用します。
         /// </summary>
         public static bool SysLogWriteWaiting
         {
             get
             {
-                return syslogWriteWaiting;
+                return _SyslogWriteWaiting;
             }
             set
             {
-                syslogWriteWaiting = value;
-                if (!syslogWriteWaiting)
+                _SyslogWriteWaiting = value;
+                if (!_SyslogWriteWaiting)
                 {
                     WriteLogFileAsync();
                 }
             }
         }
-        private static bool syslogWriteWaiting = false;
+        private static bool _SyslogWriteWaiting = false;
 
         #endregion
 
         #region ログ出力時のLoggingイベント無効化を参照または設定 ([R/W] MuteLoggingEvent)
 
         /// <summary>
-        /// ログ出力時のLoggingイベント無効化を参照または設定します。
+        /// ログ出力時のLoggingイベント無効化を参照または設定します。既定値は false です。
         /// </summary>
         public static bool MuteLoggingEvent { get; set; } = false;
 
@@ -411,10 +413,10 @@ namespace Jaffa.Diagnostics
         {
             get
             {
-                return lastFilename;
+                return _LastFilename;
             }
         }
-        private static string lastFilename = "";
+        private static string _LastFilename = "";
 
         #endregion
 

@@ -31,7 +31,7 @@ namespace Jaffa
         private static void OnCultureChanged()
         {
             // カルチャー変更を通知
-            CultureChanged?.Invoke(currentCulture, new EventArgs());
+            CultureChanged?.Invoke(_currentCulture, new EventArgs());
         }
 
         #endregion
@@ -229,11 +229,11 @@ namespace Jaffa
             }
 
             // 初回は起動時のカルチャー名として記憶
-            if (startupCulture.Equals(""))
+            if (StartupCulture.Equals(""))
             {
-                startupCulture = rt;
-                currentCultureSetting = rt;
-                currentCulture = rt;
+                StartupCulture = rt;
+                _currentCultureSetting = rt;
+                _currentCulture = rt;
             }
 
             return rt;
@@ -270,17 +270,17 @@ namespace Jaffa
                 }
                 if (s[1].Equals(name) || s[0].Equals(name))
                 {
-                    string saveCulture = currentCulture;
-                    currentCultureSetting = s[0];
+                    string saveCulture = _currentCulture;
+                    _currentCultureSetting = s[0];
                     if (s[0].Equals("Auto"))
                     {
-                        currentCulture = startupCulture;
+                        _currentCulture = StartupCulture;
                     }
                     else
                     {
-                        currentCulture = s[0];
+                        _currentCulture = s[0];
                     }
-                    if (saveCulture != currentCulture || isChangeCulture)
+                    if (saveCulture != _currentCulture || isChangeCulture)
                     {
                         isChangeCulture = false;
 
@@ -306,7 +306,7 @@ namespace Jaffa
         /// <remarks>
         /// テキスト内の {resource-name} を現在のカルチャーに対応するリソースから変換します。
         /// </remarks>
-        static public string ConvertCurrentCultureResourceString(string region, string text)
+        public static string ConvertCurrentCultureResourceString(string region, string text)
         {
             ResourceManager resManager = Core.Resource(region);
             string[] tl = text.Split(new char[] { '{' });
@@ -341,12 +341,12 @@ namespace Jaffa
 
         #region プロパティ
 
-        #region 起動時のカルチャー名を取得 ([R] startupCulture) [Private]
+        #region 起動時のカルチャー名を取得 ([R] StartupCulture) [Private]
 
         /// <summary>
         /// 起動時のカルチャー名を取得します。
         /// </summary>
-        private static string startupCulture = "";
+        private static string StartupCulture = "";
 
         #endregion
 
@@ -359,10 +359,10 @@ namespace Jaffa
         {
             get
             {
-                return currentCultureSetting;
+                return _currentCultureSetting;
             }
         }
-        private static string currentCultureSetting = "";
+        private static string _currentCultureSetting = "";
 
         #endregion
 
@@ -375,10 +375,10 @@ namespace Jaffa
         {
             get
             {
-                return currentCulture;
+                return _currentCulture;
             }
         }
-        private static string currentCulture = "";
+        private static string _currentCulture = "";
 
         #endregion
 

@@ -5,7 +5,7 @@ namespace Jaffa.Diagnostics
     /// <summary>
     /// ロギング設定クラス
     /// </summary>
-    public class LoggingSettings : Object
+    public static class LoggingSettings : Object
     {
         #region プロパティ
 
@@ -27,21 +27,21 @@ namespace Jaffa.Diagnostics
         {
             get
             {
-                return folder;
+                return _Folder;
             }
             set
             {
-                folder = value;
-                if (folder.Length > 0)
+                _Folder = value;
+                if (_Folder.Length > 0)
                 {
-                    if (!folder.Substring(folder.Length - 1, 1).Equals(@"\"))
+                    if (!_Folder.Substring(_Folder.Length - 1, 1).Equals(@"\"))
                     {
-                        folder += @"\";
+                        _Folder += @"\";
                     }
                 }
             }
         }
-        private static string folder = @"Logs\";
+        private static string _Folder = @"Logs\";
 
         #endregion
 
@@ -50,35 +50,35 @@ namespace Jaffa.Diagnostics
         /// <summary>
         /// ログファイル名を参照または設定します。
         /// ファイル名の'[@]'の部分はLoggingModeに合わせて変化し、
-        /// Sizeの場合は1～2, 
-        /// Dayの場合は1～31, 
-        /// Weekの場合は1～7,
-        /// Monthの場合は1～12の値を取ります。
+        /// Sizeの場合は01～02, 
+        /// Dayの場合は01～31, 
+        /// Weekの場合は01～07,
+        /// Monthの場合は01～12の値を取ります。
         /// </summary>
         public static string FileName
         {
             get
             {
-                return fileName;
+                return _FileName;
             }
             set
             {
-                fileName = value;
-                fileName = fileName.Replace(@"\", "");
-                if (fileName.LastIndexOf(".") < 1)
+                _FileName = value;
+                _FileName = _FileName.Replace(@"\", "");
+                if (_FileName.LastIndexOf(".") < 1)
                 {
-                    fileName += ".txt";
+                    _FileName += ".txt";
                 }
-                if (fileName.LastIndexOf("[@]") < 1)
+                if (_FileName.LastIndexOf("[@]") < 1)
                 {
-                    int pos = fileName.LastIndexOf(".");
-                    fileName = fileName.Substring(0, pos) +
+                    int pos = _FileName.LastIndexOf(".");
+                    _FileName = _FileName.Substring(0, pos) +
                         "[@]" +
-                        fileName[pos..];
+                        _FileName[pos..];
                 }
             }
         }
-        private static string fileName = "syslog[@].txt";
+        private static string _FileName = "syslog[@].txt";
 
         #endregion
 
@@ -93,25 +93,25 @@ namespace Jaffa.Diagnostics
         {
             get
             {
-                return maxFileSizeKB;
+                return _MaxFileSizeKB;
             }
             set
             {
                 if (value < 2)
                 {
-                    maxFileSizeKB = 2;
+                    _MaxFileSizeKB = 2;
                 }
                 else if (value > 32767)
                 {
-                    maxFileSizeKB = 32767;
+                    _MaxFileSizeKB = 32767;
                 }
                 else
                 {
-                    maxFileSizeKB = value;
+                    _MaxFileSizeKB = value;
                 }
             }
         }
-        private static int maxFileSizeKB = 2048;
+        private static int _MaxFileSizeKB = 2048;
 
         #endregion
 

@@ -14,6 +14,11 @@
         /// <summary>
         /// 時刻変更
         /// </summary>
-        public const string JFWI0002 = "JFWI0002 {TIME_CHANGE} %0 => %1";
+        public const string JFWI0002 = "JFWI0002 {TIME_BEFORE_CHANGE} %0 => %1";
+
+        /// <summary>
+        /// 時刻変更
+        /// </summary>
+        public const string JFWI0003 = "JFWI0003 {TIME_AFTER_CHANGE} %0 => %1";
     }
 }

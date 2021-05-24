@@ -132,8 +132,11 @@
   <data name="NOT_SUPPORTED" xml:space="preserve">
     <value>Not supported.</value>
   </data>
-  <data name="TIME_CHANGE" xml:space="preserve">
-    <value>Jaffa Framework current time has changed.</value>
+  <data name="TIME_AFTER_CHANGE" xml:space="preserve">
+    <value>The current time of Jaffa Framework has been changed.</value>
+  </data>
+  <data name="TIME_BEFORE_CHANGE" xml:space="preserve">
+    <value>The current time in Jaffa Framework will be changed.</value>
   </data>
   <data name="TIME_FORMAT" xml:space="preserve">
     <value>MM/dd/yyyy hh:mm:ss tt</value>
