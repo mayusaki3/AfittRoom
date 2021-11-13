@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VRoomWin", "VRoomWin\VRoomWin.csproj", "{657F3D4C-A158-4801-90CD-39CCC58543F0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JaffaCore", "JaffaCore\JaffaCore.csproj", "{62D43F05-3008-45CD-899A-667DA6C7883A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sansa.Model", "Sansa.Model\Sansa.Model.csproj", "{C902E38C-A224-4158-A34D-1E01919A6296}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +15,6 @@ Global
 		{657F3D4C-A158-4801-90CD-39CCC58543F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{657F3D4C-A158-4801-90CD-39CCC58543F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{657F3D4C-A158-4801-90CD-39CCC58543F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62D43F05-3008-45CD-899A-667DA6C7883A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62D43F05-3008-45CD-899A-667DA6C7883A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62D43F05-3008-45CD-899A-667DA6C7883A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62D43F05-3008-45CD-899A-667DA6C7883A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C902E38C-A224-4158-A34D-1E01919A6296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C902E38C-A224-4158-A34D-1E01919A6296}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C902E38C-A224-4158-A34D-1E01919A6296}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C902E38C-A224-4158-A34D-1E01919A6296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
