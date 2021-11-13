@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="JaffaCore">
+      <HintPath>..\Dlls\JaffaCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Sansa.Model">
+      <HintPath>..\Dlls\Sansa.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
